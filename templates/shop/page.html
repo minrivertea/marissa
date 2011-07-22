@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block pagetitle %}{{ page.title }}{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+div#main-text-wide div#left {
+  width: 600px;	
+}
+
+div#main-text-wide div#right {
+  float: right;
+  width: 300px;	
+  margin-top: 65px;
+}
+
+div#right div.info {
+    float: left;
+    margin-bottom: 20px;
+    width: 260px;
+    border: none;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+div#right h4 {
+  margin: 0;
+  color: #333;
+  font-weight: bold;
+  font-size: 15px;	
+}
+
+div#right p {
+  font-size: 12px;
+  line-height: 1.6em;	
+}
+
+div.image {
+  float: right;
+  margin: 0 0 30px 40px;	
+}
+
+div#right-nav {
+	margin-top: 0px;
+}
+
+div#right-nav ul {
+  margin-top: 0px;	
+}
+
+div#right-nav ul li.selected a {
+  font-weight: bold;
+  color: #333;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div id="main-text-wide">
+
+<div id="right">
+  {% if page.parent or page.get_children %}
+	<div id="right-nav">
+		{% if page.parent %}
+			<ul>
+			{% for p in page.parent.get_children %}
+				<li {% if p.slug in request.path %}class="selected"{% endif %}>
+					<a href="{% url page p.slug %}">{{ p.title }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<ul>
+		    {% for p in page.get_children %}
+		    	<li {% if p.slug in request.path %}class="selected"{% endif %}>
+		    		<a href="{% url page p.slug %}">{{ p.title }}</a>
+		    	</li>
+		    {% endfor %}
+		    </ul>
+		{% endif %}
+	</div>
+  {% endif %}
+
+	<div class="info">
+		<h4>We're on twitter!</h4>
+		<p>If you want to get in touch, why not send us a message on twitter?</p>
+	</div>
+</div>
+
+<div id="left">
+		<h1>{{ page.title }}</h1>
+		{% if page.image %}
+			{% thumbnail page.image "200" crop="center" as im %}
+				<div class="image"><img src="{{ im.url }}"/></div>
+			{% endthumbnail %}
+		{% endif %}
+	
+		{{ page.content|safe }}
+</div>
+
+
+	
+</div>
+
+
+
+
+{% endblock %}

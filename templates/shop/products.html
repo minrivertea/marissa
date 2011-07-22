@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block metadescription %}{% endblock %}
+
+{% block pagetitle %}Our products{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+div#right p.category-description {
+  margin-bottom: 40px;	
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div id="main-text-wide">
+
+	
+	<div id="left">
+		{% include 'shop/snippets/categories.html' %}
+	</div>
+
+	<div id="right">
+	<h1>Our products {% if category %} - {{ category.name }}{% endif %}</h1>
+	<p class="category-description">
+		{% if category %}
+		{{ category.description }}
+		{% else %}
+		Donec ante tellus, convallis id lacinia in, auctor non leo. Duis luctus sodales volutpat. Fusce porttitor faucibus eros ut lacinia. Nullam eleifend pulvinar nunc, nec rhoncus elit fermentum ut. Aliquam volutpat placerat justo vitae porta. 
+		{% endif %}	
+	</p>
+		<div id="products">
+			{% include "shop/snippets/products_list.html" %}
+		</div>
+		
+	</div>
+
+	
+
+</div>
+
+
+{% endblock %}

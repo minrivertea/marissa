@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load django_static %}
+{% load thumbnail %}
+
+{% block extracss %}
+<style type="text/css">
+
+div#main-text-wide div#left {	
+  width: 600px;
+}
+
+div.other-reviews {
+  margin-top: 0px;
+  float: left;	
+}
+
+textarea {
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    width: 500px;
+}
+
+
+</style>
+{% endblock %}
+
+{% block metadescription %}Write a review about {{ product.name }}{% endblock %}
+
+{% block pagetitle%}Write a review{% endblock %}
+
+
+
+{% block content %}
+
+	<div id="main-text-wide">
+		<h1>Write a review for {{ product.name }}</h1>
+		
+		<div id="left">
+		<p>Thanks for taking the time to write a review. Quality is extremely important to us, so feel free to write down any thoughts, positive or negative, about this product.</p>
+		<p>* <em>we may publish this review on our website - by submitting your review, you give us permission to do so.</em></p>
+
+	  	<form action="." method="post">
+		
+			<div class="row-box">
+			<textarea id="id_text" rows="10" cols="40" name="text" onclick="clearInput(this)">Add your review here</textarea>
+			</div>
+			
+			<div class="row-box">
+			<input type="text" name="first_name" id="id_first_name" />
+			<label for="id_first_name">First name</label>
+			
+			<input type="text" name="last_name" id="id_last_name" />
+			<label for="id_last_name">Last name</label>
+			 
+			<input type="text" name="email" id="id_email" />
+			<label for="id_email">Email address</label>
+			</div>
+			
+			<div id="submit-button">
+			<input class="submit-button" value="" type="submit">
+			</div>
+			
+
+			
+		</form>		
+		</div>
+		
+
+</div>
+		
+		<br clear="all"/>
+
+
+		
+
+    {% endblock %}

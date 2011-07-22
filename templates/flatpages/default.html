@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}{{ flatpage.title }}{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+div#main-text-wide div#left {
+  width: 600px;	
+}
+
+div#main-text-wide div#right {
+  float: right;
+  width: 300px;	
+}
+
+div#right div.info {
+    float: left;
+    margin-bottom: 20px;
+    width: 260px;
+    border: none;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+div#right h4 {
+  margin: 0;
+  color: #333;
+  font-weight: bold;
+  font-size: 15px;	
+}
+
+div#right p {
+  font-size: 12px;
+  line-height: 1.6em;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div id="featured-small"></div>
+
+<div id="main-text-wide">
+
+<div id="right">
+	<div class="info">
+		<h4>We're on twitter!</h4>
+		<p>If you want to get in touch, why not send us a message on twitter?</p>
+	</div>
+</div>
+
+<div id="left">
+		<h1>{{ flatpage.title }}</h1>
+		{{ flatpage.content }}
+</div>
+
+
+	
+</div>
+
+
+
+
+
+
+</div>
+{% endblock %}

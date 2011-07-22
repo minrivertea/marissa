@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block pagetitle %}{{ shopsettings.homepage_title }}{% endblock %}
+
+{% block metadescription %}{{ shopsettings.homepage_description }}{% endblock %}
+
+
+{% block extrajs %}
+<script>
+$(function() {
+	$(".scroll.one").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3500 });
+	$(".scroll.two").scrollable({ vertical: true, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3800 });
+	$(".scroll.three").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4300 });
+	$(".scroll.four").scrollable({ vertical: true, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4600 });
+});
+</script>
+{% endblock %}
+
+
+
+
+{% block extracss %}
+<style type="text/css">
+div#images {
+  float: right;
+  margin-top: 30px;	
+  width: 520px;
+}
+
+div#text {
+  float: left;
+  width: 400px;
+  margin-top: 30px;	
+}
+
+div#text p.subtitle {
+  font-weight:bold;
+  border: none;	
+  font-size: 14px;
+}
+
+div#text p.subtitle span {
+  text-decoration: underline;	
+}
+
+/* root element for single scroll */
+	.scroll {
+		position:relative;
+		overflow:hidden;
+		width: 250px;
+		height: 250px;
+		float:left;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		box-shadow: 0 1px 8px #e1e1e1;
+	}
+	
+	/* root element for the scroll pics */
+	.scroll.two .pics, .scroll.four .pics {
+		width:250px;
+		position:absolute;
+		clear:both;
+	}
+
+	.scroll.one .pics, .scroll.three .pics {
+		width:20000em;
+		position:absolute;
+		clear:both;
+	}
+	
+	/* single scroll item */
+	.pics div {
+		float:left;
+		cursor:pointer;
+		width:250px !important;
+		height:250px;
+		margin:0px;
+	}
+	
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="images">
+	<div class="scroll one">
+		<div class="pics">
+		{% for product in featured_one %}
+			{% thumbnail product.image "250x250" crop="top" as im %}
+				<div style="background-image:url('{{ im.url }}')"></div>	
+			{% endthumbnail %}
+		{% endfor %}
+		</div>
+	</div>
+	
+	<div class="scroll two">
+		<div class="pics">
+		{% for product in featured_two %}
+			{% thumbnail product.image "250x250" crop="top" as im %}
+				<div style="background-image:url('{{ im.url }}')"></div>	
+			{% endthumbnail %}
+		{% endfor %}
+		</div>
+	</div>
+
+	<div class="scroll three">
+		<div class="pics">
+		{% for product in featured_three %}
+			{% thumbnail product.image "250x250" crop="top" as im %}
+				<div style="background-image:url('{{ im.url }}')"></div>	
+			{% endthumbnail %}
+		{% endfor %}
+		</div>
+	</div>
+
+	<div class="scroll four">
+		<div class="pics">
+		{% for product in featured_four %}
+			{% thumbnail product.image "250x250" crop="top" as im %}
+				<div style="background-image:url('{{ im.url }}')"></div>	
+			{% endthumbnail %}
+		{% endfor %}
+		</div>
+	</div>
+
+
+	
+</div>
+
+<div id="text">
+<h1>We source factories for your products in China</h1>
+<p><strong>No trading companies, just direct access to high quality factories in China</strong> - we make that happen for you. Donec ante tellus, convallis id lacinia in, auctor non leo. Duis luctus sodales volutpat. Fusce porttitor faucibus eros ut lacinia. Nullam eleifend pulvinar nunc, nec rhoncus elit fermentum ut. Aliquam volutpat placerat justo vitae porta. </p>
+</div>
+	
+
+{% endblock %}

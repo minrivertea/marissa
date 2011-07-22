@@ -1,0 +1,11 @@
+SENT FROM WEBSITE CONTACT FORM:
+
+**********
+
+Message: 
+
+{{ message }}
+
+Sender: {{ your_email }}
+Name: {{ your_name }}
+Country: {{ country }}

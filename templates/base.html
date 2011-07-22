@@ -1,0 +1,141 @@
+{% load django_static %}
+{% load nav_selected %}
+{% load thumbnail %}
+
+{% block doctype %}<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% endblock %}
+
+<head>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="en-gb" http-equiv="Content-Language" />
+	<meta content="{% block metadescription %}{% endblock %}" name="description" />
+	
+	<meta name="google-site-verification" content="obu9NY_4FNbUQMNlrvWOk59ABZ9gROs37zTql__Lglo" />
+	
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="Django - http://www.djangoproject.com" />
+	<meta name="DC.format" content="text/html" />
+	<meta name="DC.type" content="Django Site" />
+	<meta name="robots" content="ALL" />
+	<title>{% block pagetitle %}{% endblock %} | {{ sitename }}</title>
+	<link rel="shortcut icon" href="{% staticfile '/images/favicon.ico' %}" type="image/x-icon">
+
+	
+	{% block extra-head %}{% endblock %}
+
+	    <link rel="stylesheet" href="{% staticfile '/css/styles.css' %}" />
+	    <script type="text/javascript" src="{% staticfile '/js/searchbar.js' %}"></script>
+	    <script type="text/javascript" src="{% staticfile '/js/jquery-1.6.min.js' %}"></script>
+	    {% if ga_is_on %}
+	    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+	    {% else %}
+	    <script type="text/javascript" src="{% staticfile '/js/jquery.tools.min.js' %}"></script>
+	    {% endif %}
+	    <!--[if lte IE 6]>
+		<link rel="stylesheet" media="screen" type="text/css" href="{% staticfile '/css/ie6.css' %}" />
+		<![endif]-->
+
+
+	{% block extracss %}{% endblock %}
+	
+	{% if ga_is_on %}
+    {% block ga %}
+	    {{ shopsettings.ga_tracking_code|safe }}
+    {% endblock %}
+    {% endif %}
+</head>
+
+
+
+<body>
+
+<div id="super">
+    <div id="container">
+    
+		{% if request.user.is_authenticated %}
+	    <div id="header-messages"> 
+	    	<div class="hm"><a href="/account/" title="" alt="">Your account</a> | <a href="{% url auth_logout %}">Logout</a>
+	    	{% if request.user.is_superuser %}   
+		   	| <a href="/admin/">Admin stuff</a>
+		   	{% endif %}
+		   	</div>
+		</div>    
+		{% endif %}
+    	
+	    <div id="header">
+	    	<div id="logo">
+	    		<a title="" alt="" href="/">
+	    		{% thumbnail shopsettings.logo "400x100" crop="center" as im %}
+	    			<img src="{{ im.url }}">
+	    		{% endthumbnail %}
+	    		</a>
+	    	</div>
+
+	    	<div id="navigation">
+
+			{% if payments_active %}
+	    	<div id="basket-header">
+   	        	<a class="{% nav_selected request '^/basket/' %}" href="{% url basket %}" title="View your basket" alt="">
+   	        	Your basket {% ifequal basket_quantity 0 %}{% else %}({{ basket_quantity }}) - <span class="red">checkout now &raquo;</span>{% endifequal %}
+   	        	</a>
+	    	</div>
+	    	{% endif %}
+
+	    	    <ul id="nav">
+	    	    	<li>
+	    	    		<a class="{% nav_selected request '^/$' %}" href="{% url home %}" title="">Home</a>
+	    	    	</li>
+	    	        <li>
+	    	        	<a class="{% nav_selected request '^/products/' %}" href="{% url products %}" title="" alt="">Products</a>
+	    	        </li>
+	    	        <li>
+	    	        	<a class="{% nav_selected request '^/services/' %}" href="/services/" title="" alt="">Services</a>
+	    	        </li>
+	    	        <li>
+	    	        	<a class="{% nav_selected request '^/about-us/' %}" href="/about-us/" title="" alt="">About us</a>
+	    	        </li>
+	    	        <li>
+	    	        	<a class="{% nav_selected request '^/contact-us/' %}" href="/contact-us/" title="" alt="">Contact us</a>
+	    	        </li>
+	    	        {% if request.user.is_authenticated %}
+	    	        {% else %}
+	    	        <li>
+	    	        	<a href="/accounts/login/" title="" alt="">Login</a>
+	    	        </li>
+	    	        {% endif %}
+	    	        
+	  			</ul>
+			</div>
+			
+			{% block banner %}{% endblock %}
+
+
+	</div>
+
+		{% block content %}{% endblock %}
+	
+	
+		{% include "shop/snippets/footer.html" %} 
+
+    </div>
+
+		<ul class="footer-links">
+	          <li><a href="/terms-and-conditions/">Terms and Conditions</a>  /</li>
+	          <li><a href="/about-us/">About Us</a>  /</li>
+	          <li><a href="/privacy/">Privacy</a>  /</li>
+	          <li><a href="{% url contact_us %}">Contact Us</a></li> / 
+	          <li><a href="{% url products %}">Our products</a></li>
+	          <li><br/></li>
+	   </ul>
+	   <p></p>
+</div>
+	{% block extrajs %}{% endblock %}
+
+</body>
+
+</html>

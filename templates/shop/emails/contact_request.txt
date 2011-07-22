@@ -1,0 +1,8 @@
+SOMEBODY REQUESTED THAT YOU CONTACT THEM THROUGH THE WEBSITE:
+
+**********
+
+Their contact details: {{ details }}
+They were looking at this product when they contacted you: 
+{{ product.name }}
+({{ product.get_absolute_url }})

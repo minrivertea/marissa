@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block pagetitle %}{% endblock %}
+
+{% block metadescription %}{% endblock %}
+
+
+{% block extracss %}
+<style type="text/css">
+
+div#main-text-wide div#left {
+  width: 600px;	
+}
+
+ul#products {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;	
+}
+
+ul#products li {
+  width: 160px;
+  float: left;
+  margin: 0 20px 20px 0;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="main-text-wide">
+
+	<h1>Order {{ order.invoice_id }}</h1>
+
+	<div id="left">
+	
+		<h3>Order status</h3>
+		<p>Your order is currently <strong>{{ order.status }}</strong> - this was last updated on {{ order.date_modified }}</p>
+	
+		<h3>Order details</h3>
+		<ul>
+		{% for item in order.items.all %}
+		<li>{{ item }}</li>
+		{% endfor %}
+		<li><strong>Cost:</strong> {{ order.get_amount }}</li>
+		</ul>
+	
+	</div>
+
+
+</div>
+{% endblock %}

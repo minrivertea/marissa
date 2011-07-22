@@ -1,0 +1,21 @@
+		<ul id="categories">
+			{% for category in categories %}
+			    {% if category.parent %}
+			    {% else %}
+				<li>
+					<a href="{% url category category.slug %}">{{ category.name }}</a>
+					{% if category.get_children %}
+						{% if category.slug in request.path %}
+				        	<ul class="sub-categories">
+				        		{% for category in category.get_children %}
+				        			<li>
+				        				<a href="{% url sub_category category.parent.slug category.slug %}">{{ category.name }}</a>
+				        			</li>
+				        		{% endfor %}
+				        	</ul>
+						{% endif %}
+					{% endif %}
+				</li>
+				{% endif %}
+			{% endfor %}
+		</ul>

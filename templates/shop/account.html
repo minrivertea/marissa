@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block pagetitle %}{% endblock %}
+
+{% block metadescription %}{% endblock %}
+
+
+{% block extracss %}
+<style type="text/css">
+
+div#main-text-wide div#left {
+  width: 600px;	
+}
+
+ul#products {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;	
+}
+
+ul#products li {
+  width: 100px;
+  float: left;
+  margin: 0 20px 20px 0;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="main-text-wide">
+
+	<h1>Your account ({{ shopper.email }})</h1>
+
+	<div id="left">
+	
+		<h3>Your details</h3>
+		<p>Any of these details not up to date? <a href="{% url contact_us %}">Contact us</a> and let us know</p>
+		<ul>
+			<li><strong>Name: </strong> {{ shopper.first_name }} {{ shopper.last_name }}</li>
+			<li><strong>Email: </strong> {{ shopper.email }}</li>
+			<li><strong>Phone: </strong> {{ shopper.phone }}</li>
+		</ul>
+	
+		<h3>Your orders</h3>
+		{% if orders %}
+			<ul>
+			{% for order in orders %}
+				<li><strong><a href="{% url account_order order.id %}">{{ order.invoice_id }}</a></strong> - 
+				{{ order.status }}<br/><em>last updated: {{ order.date_modified|date:"D m Y" }}</em></li>
+			{% endfor %}
+			</ul>
+		{% else %}
+		<p>You haven't made any orders</p>
+		{% endif %}
+	
+		<h3>Latest designs</h3>
+		<p>Check out our latest designs</p>
+		
+		<ul id="products">
+		{% for product in latest_products %}
+			<li>
+				{% thumbnail product.image "100x100" crop="center" as im %}
+					<a href="{% url product_view product.slug %}"><img src="{{ im.url }}"></a>
+				{% endthumbnail %}
+			</li>
+		{% endfor %}
+		</ul>
+	
+	</div>
+
+
+</div>
+{% endblock %}
