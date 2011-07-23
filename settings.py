@@ -72,7 +72,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 #    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'ab.middleware.ABMiddleware',
+#    'ab.middleware.ABMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
