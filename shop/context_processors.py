@@ -13,7 +13,10 @@ def common(request):
         context['paypal_receiver_email'] = settings.PAYPAL_RECEIVER_EMAIL
         context['paypal_submit_url'] = settings.PAYPAL_SUBMIT_URL
         context['payments_active'] = True
-    context['shopsettings'] = get_object_or_404(ShopSettings, pk=1)
+    try:
+        context['shopsettings'] = get_object_or_404(ShopSettings, pk=1)
+    except:
+        pass
     context['sitename'] = settings.PROJECT_NAME
     context['siteemail'] = settings.PROJECT_EMAIL
     context['ga_is_on'] = settings.GA_IS_ON
