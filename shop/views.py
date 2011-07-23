@@ -15,7 +15,7 @@ from cStringIO import StringIO
 import os, md5
 import datetime
 import uuid
-import twitter
+# import twitter
 import re
 
 from marissa.shop.models import *
