@@ -54,34 +54,24 @@ def index(request):
     
     return render(request, "shop/home.html", locals())
 
-def page(request, slug):
-    page = get_object_or_404(Page, slug=slug)
-    return render(request, "shop/page.html", locals())
+def page(request, slug, sub_page=None):
+    if sub_page:
+        page = get_object_or_404(Page, slug=sub_page)
+    else:
+        page = get_object_or_404(Page, slug=slug)
+    
+    if page.template:
+        return render(request, page.template, locals())
+    else:
+    
+        return render(request, "shop/page.html", locals())
     
 # the product listing page
-def products(request):
-    try:
-        added = request.session['ADDED']
-    except:
-        added = None
-       
-    if added:
-        thing = get_object_or_404(BasketItem, id=request.session['ADDED'])
-        message = "1 x %s%s added to your basket!" % (thing.item.weight, thing.item.weight_unit)
-        request.session['ADDED'] = None
-    
-    if request.user.is_authenticated(): 
-        products = Product.objects.filter(is_active=True)
-    else: 
-        products = Product.objects.filter(is_active=True, is_private=False)
-        
-        
-    prices = UniqueProduct.objects.filter(is_active=True)
-    products_and_prices = []
-    for product in products:
-        products_and_prices.append((product, prices.filter(parent_product=product)))
+def categories(request):
+    all_categories = Category.objects.filter(parent=None)
 
-    return render(request, "shop/products.html", locals())
+    return render(request, "shop/categories.html", locals())
+
 
 # view for a category of products
 def category(request, cat=None, sub_cat=None):
@@ -110,8 +100,6 @@ def category(request, cat=None, sub_cat=None):
         for c in children:
             if p.category == c:
                 products.append(p)
-    
-    print products
 
     # add in the prices information, and then merge the lists    
     prices = UniqueProduct.objects.filter(is_active=True)
@@ -119,7 +107,7 @@ def category(request, cat=None, sub_cat=None):
     for product in products:
         products_and_prices.append((product, prices.filter(parent_product=product)))
     
-    return render(request, "shop/products.html", locals())
+    return render(request, "shop/categories.html", locals())
 
 
 # view for a single product
@@ -142,7 +130,7 @@ def product_view(request, slug):
             
     
     prices = UniqueProduct.objects.filter(parent_product=product, is_active=True).order_by('price')
-    others = Product.objects.filter(is_active=True).exclude(id=product.id)
+    other_products = Product.objects.filter(is_active=True, category=product.category).exclude(id=product.id)
     reviews = Review.objects.filter(product=product.id, is_published=True)[:2]
     
     if request.method == 'POST':
@@ -175,9 +163,12 @@ def product_view(request, slug):
     
     else:
         form = ContactMeForm()
-        if request.session['MESSAGE'] == "1":
-            request.session['MESSAGE'] = None
-            message = "Thanks, we'll get back to you as soon as possible."
+        try:
+            if request.session['MESSAGE'] == "1":
+                request.session['MESSAGE'] = None
+                message = "Thanks, we'll get back to you as soon as possible."
+        except:
+            pass
     return render(request, "shop/product_view.html", locals())
     
 def contact_us(request):

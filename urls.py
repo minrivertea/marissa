@@ -4,8 +4,10 @@ import django.views.static
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.views.generic.simple import direct_to_template
 from shop.models import Product
+from shop.views import page
 from blog.models import BlogEntry
 from marissa.blog.feeds import LatestEntries
+
 
 # admin urls
 from django.contrib import admin
@@ -45,7 +47,9 @@ urlpatterns = patterns('',
     (r'^humans\.txt$', direct_to_template, {'template': 'humans.txt', 'mimetype': 'text/plain'}),
     (r'^products\.xml$', direct_to_template, {'template': 'products.xml', 'mimetype': 'text/xml'}),
     (r'^400/$', direct_to_template, {'template': '404.html'}),  
-    (r'^comments/', include('django.contrib.comments.urls')),  
+    (r'^comments/', include('django.contrib.comments.urls')), 
+    url(r'^(?P<slug>[\w-]+)/$', page, name="page"), 
+    url(r'^(?P<slug>[\w-]+)/(?P<sub_page>[\w-]+)/$', page, name="sub_page"),
 )
 
 

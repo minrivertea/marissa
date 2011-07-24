@@ -25,15 +25,21 @@ div#right p.category-description {
 	</div>
 
 	<div id="right">
-	<h1>Our products {% if category %} - {{ category.name }}{% endif %}</h1>
+	<h1>Our products
+	{% if category %}
+	- {{ category.name }} ({{ category.products_count }})
+	{% else %}
+	({{ all_products_count }})
+	{% endif %}
+	</h1>
 	
-	<p class="category-description">
+	
 		{% if category %}
-		{{ category.description }}
+		{{ category.description|safe }}
 		{% else %}
-		Donec ante tellus, convallis id lacinia in, auctor non leo. Duis luctus sodales volutpat. Fusce porttitor faucibus eros ut lacinia. Nullam eleifend pulvinar nunc, nec rhoncus elit fermentum ut. Aliquam volutpat placerat justo vitae porta. 
+		{{ shopsettings.product_page_description|safe }}
 		{% endif %}	
-	</p>
+
 	
 
 	<div id="products">	
@@ -42,7 +48,6 @@ div#right p.category-description {
 		{% else %}
 			{% include "shop/snippets/categories_list.html" %}
 		{% endif %}
-
 	</div>
 		
 </div>

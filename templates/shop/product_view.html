@@ -494,7 +494,7 @@ div.contact input.submit {
 
 div.contact input.submit:hover {
   cursor: pointer;
-  background-color: #00C2D9;	
+  background-color: #FF9600;	
 }
 
 </style>
@@ -513,8 +513,17 @@ div.contact input.submit:hover {
 	<div class="product-top">
 		<div class="main-image">
 				{% thumbnail product.image "500" as im %}
-					<img class="product-small" alt="{{ im.url }}" title="{{ product.image_caption }}" src="{{ im.url }}"/></a>
+					<img class="product-small" alt="{{ im.url }}" title="{{ product.image_caption }}" src="{{ im.url }}"/>
 				{% endthumbnail %}
+				
+				{% if other_products %}
+				<h4>Other products from the <a href="{% url category product.category.slug %}">{{ product.category }}</a> category</h4>
+				{% for p in other_products %}
+					{% thumbnail p.image "100" crop="center" as im %}
+						<a href="{% url product_view p.slug %}"><img alt="" title="{{ p.name }}" src="{{ im.url }}"/></a>
+					{% endthumbnail %}
+				{% endfor %}
+				{% endif %}
 		</div>
 		
 		<div class="description">

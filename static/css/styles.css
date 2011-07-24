@@ -41,8 +41,7 @@ div#main-text-wide div#left p {
 }
 
 h4 {
-  font-weight: normal;
-  border-bottom: 1px solid #e1e1e1;	
+  font-weight: bold;	
   margin-bottom: 10px;
   padding-bottom: 5px;
 }
@@ -83,7 +82,7 @@ a {
 }
 
 a:link, a:visited {
-  color: #444;
+  color: #ff9600;
 }
 
 a:hover, a:active {
@@ -117,7 +116,7 @@ div#container {
 
 div#footer {
   width: 960px;	
-  height: 300px;
+  height: 50px;
   margin-top: 30px;
   float: left;
   padding-top: 20px;
@@ -189,7 +188,7 @@ div.footer-box ul li {
 /* typography */
 
 h1 {
-    color: #666;
+    color: #333;
     font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
     font-size: 2em;
     font-weight: bold;
@@ -350,18 +349,15 @@ ul#nav li a {
     float: left;
     font-family: 'Helvetica Neue';
     padding: 0px 13px;
-    color: #999;
     font-weight: bold;
     font-size: 13px;
 }
 
 ul#nav li a:hover {
   text-decoration: underline;
-  color: #00c2d9;
 }
 
 ul#nav li a.selected:hover {
-    color: #00c2d9;	
 }
 
 ul#nav li a.selected {
@@ -501,7 +497,8 @@ div#home-extra div.left p {
 /* right navigation styles */
 ul#right-nav {
   list-style-type: none;
-  padding: 0;	
+  padding: 0;
+  margin-top: 0;	
 }
 
 ul#right-nav li {
@@ -513,21 +510,21 @@ ul#right-nav li {
 ul#right-nav li a {
   -moz-transition-duration: 300ms;
   -moz-transition-property: background;
-  background-color: #f6f6f6;
+  background-color: #FFD69B;
   padding: 5px 5px 5px 20px;
   display: block;
   margin-bottom: 2px;
-  color: #666;  	
+  color: #333;  	
 }
 
 ul#right-nav li a.selected {
-  color: #197621;  	
-  background-color: #e9e9e9;
+  color: #333;  	
+  background-color: #efac4d;
 }
 
 ul#right-nav li a:hover {
-  color: #197621;  	
-  background-color: #E0F1E4;
+  color: #333;  	
+  background-color: #efac4d;
 }
 
 ul#right-nav ul.subnav {
@@ -1743,3 +1740,17 @@ div.learn-box {
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
+
+div#products {
+  margin-top: 30px;	
+}
+
+div.info {
+    float: left;
+    margin-bottom: 20px;
+    width: 160px;
+    border: none;
+    background-color: #f6f6f6;
+    padding: 10px 20px;
+}
+

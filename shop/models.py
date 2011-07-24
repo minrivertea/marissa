@@ -123,20 +123,26 @@ class ShopSettings(models.Model):
     logo = models.ImageField(upload_to='images/', blank=True, null=True,
         help_text="Should be exactly 400 x 100px")
     homepage_title = models.CharField(max_length=200, blank=True, null=True)
-    homepage_description = models.CharField(max_length=200, blank=True, null=True)
-    # homepage_meta_description = models.CharField(max_length=200, blank=True, null=True)
-    # product_page_description = models.TextField(blank=True, null=True)
-    # show_prices = models.BooleanField(default=False)
-    # site_email = models.CharField(blank=True, null=True)
+    homepage_description = tinymce_models.HTMLField()
+    homepage_meta_description = models.CharField(max_length=200, blank=True, null=True)
+    product_page_description = tinymce_models.HTMLField()
+    contact_us_page = tinymce_models.HTMLField()
+    show_prices = models.BooleanField(default=False)
+    site_email = models.CharField(max_length=200, blank=True, null=True)
 
 
 class Page(models.Model):
-    slug = models.SlugField(max_length=80)
-    title = models.CharField(max_length=255)
-    parent = models.ForeignKey('self', blank=True, null=True)
+    slug = models.SlugField(max_length=80, 
+        help_text="No special characters or spaces, just lowercase letters and '-' please!")
+    title = models.CharField(max_length=255, 
+        help_text="The title of the page")
+    parent = models.ForeignKey('self', blank=True, null=True, 
+        help_text="Link this page to a higher level page - must be one of the 1st level navigation items!!")
     content = tinymce_models.HTMLField()
-    image = models.ImageField(upload_to="images/page-images", blank=True, null=True)
-    template = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to="images/page-images", blank=True, null=True, 
+        help_text="Optional - will appear on the page if you add it")
+    template = models.CharField(max_length=255, blank=True, null=True, 
+        help_text="Leave this field empty unless you know what you're doing.")
     
     def __unicode__(self):
         return self.title
@@ -149,7 +155,7 @@ class Page(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=80)
-    description = models.TextField()
+    description = tinymce_models.HTMLField()
     parent = models.ForeignKey("self", blank=True, null=True)
     image = models.ImageField(upload_to="images/category-photos")
     
@@ -159,6 +165,18 @@ class Category(models.Model):
     def get_children(self):
         children = Category.objects.filter(parent=self)
         return children
+    
+    def products_count(self):
+    	# find out how many products are in this category, and this category's children
+    	count = 0
+    	for product in Product.objects.filter(category=self):
+    	    count +=1
+    	
+    	for category in self.get_children():
+    	    for product in Product.objects.filter(category=category):
+    	       count +=1
+    	               
+        return count
     
     
 

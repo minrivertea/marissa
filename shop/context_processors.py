@@ -20,6 +20,8 @@ def common(request):
     context['sitename'] = settings.PROJECT_NAME
     context['siteemail'] = settings.PROJECT_EMAIL
     context['ga_is_on'] = settings.GA_IS_ON
+    context['pages'] = Page.objects.all()
+    context['all_products_count'] = Product.objects.all().count()
     return context
 
 def get_products(request):

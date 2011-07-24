@@ -61,7 +61,7 @@
 	    <div id="header-messages"> 
 	    	<div class="hm"><a href="/account/" title="" alt="">Your account</a> | <a href="{% url auth_logout %}">Logout</a>
 	    	{% if request.user.is_superuser %}   
-		   	| <a href="/admin/">Admin stuff</a>
+		   	| <a href="/admin/">Admin</a>
 		   	{% endif %}
 		   	</div>
 		</div>    
@@ -91,7 +91,7 @@
 	    	    		<a class="{% nav_selected request '^/$' %}" href="{% url home %}" title="">Home</a>
 	    	    	</li>
 	    	        <li>
-	    	        	<a class="{% nav_selected request '^/products/' %}" href="{% url products %}" title="" alt="">Products</a>
+	    	        	<a class="{% nav_selected request '^/products/' %}" href="{% url categories %}" title="" alt="">Products</a>
 	    	        </li>
 	    	        <li>
 	    	        	<a class="{% nav_selected request '^/services/' %}" href="/services/" title="" alt="">Services</a>
@@ -100,7 +100,7 @@
 	    	        	<a class="{% nav_selected request '^/about-us/' %}" href="/about-us/" title="" alt="">About us</a>
 	    	        </li>
 	    	        <li>
-	    	        	<a class="{% nav_selected request '^/contact-us/' %}" href="/contact-us/" title="" alt="">Contact us</a>
+	    	        	<a class="" href="/about-us/contact-us/" title="" alt="">Contact us</a>
 	    	        </li>
 	    	        {% if request.user.is_authenticated %}
 	    	        {% else %}
@@ -118,9 +118,7 @@
 	</div>
 
 		{% block content %}{% endblock %}
-	
-	
-		{% include "shop/snippets/footer.html" %} 
+
 
     </div>
 
@@ -129,7 +127,7 @@
 	          <li><a href="/about-us/">About Us</a>  /</li>
 	          <li><a href="/privacy/">Privacy</a>  /</li>
 	          <li><a href="{% url contact_us %}">Contact Us</a></li> / 
-	          <li><a href="{% url products %}">Our products</a></li>
+	          <li><a href="{% url categories %}">Our products</a></li>
 	          <li><br/></li>
 	   </ul>
 	   <p></p>
