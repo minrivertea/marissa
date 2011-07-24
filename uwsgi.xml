@@ -1,6 +1,6 @@
 <uwsgi>
-    <pythonpath>/var/lib/django/marissa/</pythonpath>
-    <pythonpath>/var/lib/django/</pythonpath>
+    <pythonpath>/var/lib/django/marissa</pythonpath>
+    <pythonpath>/var/lib/django</pythonpath>
     <app mountpoint="/">
         <script>django_wsgi</script>
     </app>
