@@ -135,7 +135,7 @@ DJANGO_STATIC_NAME_PREFIX = '/cache-forever'
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_PORT = ''
-SITE_EMAIL = ''
+SITE_EMAIL = 'info@whatever.com'
 
 # paypal info
 PAYPAL_IDENTITY_TOKEN = ""

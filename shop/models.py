@@ -119,16 +119,24 @@ COUNTRY_CHOICES = (
 
 
 class ShopSettings(models.Model):
-    ga_tracking_code = models.TextField(blank=True, null=True)
+    ga_tracking_code = models.TextField(blank=True, null=True, 
+        help_text="The code that Google provides for analytics tracking. Don't edit if you're not sure.")
     logo = models.ImageField(upload_to='images/', blank=True, null=True,
         help_text="Should be exactly 400 x 100px")
-    homepage_title = models.CharField(max_length=200, blank=True, null=True)
-    homepage_description = tinymce_models.HTMLField()
-    homepage_meta_description = models.CharField(max_length=200, blank=True, null=True)
-    product_page_description = tinymce_models.HTMLField()
-    contact_us_page = tinymce_models.HTMLField()
-    show_prices = models.BooleanField(default=False)
-    site_email = models.CharField(max_length=200, blank=True, null=True)
+    homepage_title = models.CharField(max_length=200, blank=True, null=True, 
+        help_text="This appears in the browser window (it's also the meta_title element)")
+    homepage_description = tinymce_models.HTMLField(
+        help_text="The introduction text that appears on the left of the homepage")
+    homepage_meta_description = models.CharField(max_length=200, blank=True, null=True,
+        help_text="This is the hidden page description used by Google for search listings.")
+    product_page_description = tinymce_models.HTMLField(
+        help_text="The text that appears at the top of the main product listing")
+    contact_us_page = tinymce_models.HTMLField(
+        help_text="The text that appears at the top of the contact page")
+    show_prices = models.BooleanField(default=False, 
+        help_text="Are you showing prices on the site and taking payments?")
+    site_email = models.CharField(max_length=200, blank=True, null=True,
+        help_text="The email addess that forms and contact information will be sent to.")
 
 
 class Page(models.Model):
@@ -138,7 +146,8 @@ class Page(models.Model):
         help_text="The title of the page")
     parent = models.ForeignKey('self', blank=True, null=True, 
         help_text="Link this page to a higher level page - must be one of the 1st level navigation items!!")
-    content = tinymce_models.HTMLField()
+    content = tinymce_models.HTMLField(
+        help_text="The main content of the page.")
     image = models.ImageField(upload_to="images/page-images", blank=True, null=True, 
         help_text="Optional - will appear on the page if you add it")
     template = models.CharField(max_length=255, blank=True, null=True, 
@@ -153,11 +162,15 @@ class Page(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=80)
-    description = tinymce_models.HTMLField()
-    parent = models.ForeignKey("self", blank=True, null=True)
-    image = models.ImageField(upload_to="images/category-photos")
+    name = models.CharField(max_length=200, 
+        help_text="The name of the category")
+    slug = models.SlugField(max_length=80, 
+        help_text="The URL snippet for this category. Only lowercase characters and '-' please!")
+    description = tinymce_models.HTMLField(help_text="The introduction text to this category")
+    parent = models.ForeignKey("self", blank=True, null=True, 
+        help_text="Is this a sub-category of another category?")
+    image = models.ImageField(upload_to="images/category-photos", 
+        help_text="A generic image that introduces this category of products")
     
     def __unicode__(self):
         return self.name
@@ -181,14 +194,20 @@ class Category(models.Model):
     
 
 class Product(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=80)
-    meta_title = models.CharField(max_length=200, blank=True, null=True)		
-    description = models.TextField()
-    meta_description = models.TextField(blank=True, null=True)
-    super_short_description = models.CharField(max_length=200)
-    body_text = models.TextField()
-    long_description = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=200, 
+        help_text="The product title")
+    slug = models.SlugField(max_length=80,
+        help_text="The URL snippet - must be lowercase characters and '-' only please!")
+    meta_title = models.CharField(max_length=200, blank=True, null=True, 
+        help_text="The title that appears in the browser window and google search results.")		
+    description = models.TextField(
+        help_text="A short description of the product, aimed at grabbing a user's attention.")
+    meta_description = models.TextField(blank=True, null=True, 
+        help_text="A 'hidden' description of the product, used by google in listings and for search rank.")
+    super_short_description = models.CharField(max_length=200) # can be deleted, not used.
+    body_text = models.TextField(
+        help_text="The main descriptive text. Can be long, aimed at giving a user full details about this product")
+    long_description = models.TextField(blank=True, null=True) # can be deleted, not used
     image = models.ImageField(upload_to='images/product-photos')
     image_2 = models.ImageField(upload_to='images/product-photos', blank=True, null=True)
     image_2_caption = models.CharField(max_length=200, blank=True)
@@ -200,9 +219,12 @@ class Product(models.Model):
     image_5_caption = models.CharField(max_length=200, blank=True)
     category = models.ForeignKey(Category)
     sku = models.CharField(max_length=200, blank=True, null=True)
-    is_featured = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_private = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False,
+        help_text="If ticked, this product will appear in the rotating images on the homepage.")
+    is_active = models.BooleanField(default=True, 
+        help_text="If not ticked, the product won't be visible on the site at all.")
+    is_private = models.BooleanField(default=False, 
+        help_text="If ticked, this product will only be visible to logged in users.")
         
     def __unicode__(self):
         return self.name
@@ -245,6 +267,7 @@ class Shopper(models.Model):
     last_name = models.CharField(max_length=200, null=True, blank=True)
     phone = models.CharField(max_length=200, null=True, blank=True)
     subscribed = models.BooleanField(default=False)
+    company = models.CharField(max_length=200, null=True, blank=True)
 
     def __unicode__(self):
         return self.email

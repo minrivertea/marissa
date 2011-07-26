@@ -49,13 +49,21 @@ div.form input.submit {
 
 div.form input.submit:hover {
   cursor: pointer;
-  background-color: #FF9600;	
+  background-color: #50CE33;	
 }
 
 div#right div.form p.help-text {
     margin-top: 10px;
     margin-left: 160px;
 }
+
+p.message {
+    color: #50CE33;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
 
 </style>
 {% endblock %}
@@ -82,18 +90,20 @@ div#right div.form p.help-text {
 </div>
 
 <div id="right">
-		<h1>{{ page.title }}</h1>
-		{% if page.image %}
-			{% thumbnail page.image "200" crop="center" as im %}
-				<div class="image"><img src="{{ im.url }}"/></div>
-			{% endthumbnail %}
-		{% endif %}
+		<h1>Contact Us</h1>
 	
-		{{ page.content|safe }}
-
+	    {% if message %}
+	        <p class="message">* Thanks - we've received your message and we'll get back to you as soon as possible.</p>
+	    {% endif %}
+	
+		{{ shopsettings.contact_us_page|safe }}
+		
+		{% if form.errors %}
+			{{ form.errors }}
+		{% endif %}
 
 				<div class="form">
-					<form action="." method="post">
+					<form action="{% url contact_us %}" method="post">
 					<p>	 
 						<input type="text" name="your_name" id="id_your_name" />
 						<label for="id_your_name">Your name</label>
@@ -105,7 +115,7 @@ div#right div.form p.help-text {
 					
 					<p> 
 						<input type="text" name="country" id="id_country" />
-						<label for="id_country">Country (optional)</label>
+						<label class="optional" for="id_country">Country (optional)</label>
 					</p>
 
 					<p>

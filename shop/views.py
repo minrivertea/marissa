@@ -182,12 +182,12 @@ def contact_us(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            
+            print "form is valid"
             # get cleaned data from form submission
             message = form.cleaned_data['your_message']
             your_name = form.cleaned_data['your_name']
             your_email = form.cleaned_data['your_email']
-            country = forms.cleaned_data['country']
+            country = form.cleaned_data['country']
             
             # create email
             body = render_to_string('shop/emails/contact_template.txt', {

@@ -437,7 +437,6 @@ div.fb-recommend {
 div.full-description {
   float: left;
   width: 430px;	
-  border-top: 2px dotted #e1e1e1;
   padding-top: 20px;
   margin-top: 20px;
 }
@@ -494,7 +493,7 @@ div.contact input.submit {
 
 div.contact input.submit:hover {
   cursor: pointer;
-  background-color: #FF9600;	
+  background-color: #50CE33;	
 }
 
 </style>
@@ -577,10 +576,10 @@ div.contact input.submit:hover {
 				<p class="message">{{ message }}</p>
 			{% else %}
 			<h3>Need a quote?</h3>
-			<p>You can  <a href="{% url contact_us %}">contact us for a quote now</a>, or just drop your email address or phone number here and we'll contact you.</p>
+			<p>You can  <a href="{% url contact_us %}">contact us for a quote now</a>, or just drop your email address here and we'll get back in touch.</p>
 		     
 		    <form action="." method="post">
-		    <label for="id_info">Your email and/or phone <span>(incl. international dialing code)</span></label> <input type="text" name="info" id="id_info" />
+		    <input type="text" name="info" id="id_info" />
 		    <input type="submit" value="Submit" class="submit">
 		    </form>
 			{% endif %}
