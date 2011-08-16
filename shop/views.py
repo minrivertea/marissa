@@ -92,8 +92,7 @@ def category(request, cat=None, sub_cat=None):
         category = get_object_or_404(Category, slug=cat)
 
     children = category.get_children()
-    print children
-
+    
     for p in all_products:
         if p.category == category:
             products.append(p)

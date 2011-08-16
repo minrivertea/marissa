@@ -11,6 +11,21 @@
 div#right p.category-description {
   margin-bottom: 40px;	
 }
+
+div.promo.category {
+  width: 300px;	
+  padding-bottom: 0;
+}
+
+div#right div.promo.category div.text  {
+  top: -30px;	
+}
+
+div#right div.promo.category div.text p {
+  font-size: 24px;
+  color: #333;
+}
+
 </style>
 {% endblock %}
 
@@ -43,7 +58,7 @@ div#right p.category-description {
 	
 
 	<div id="products">	
-		{% if category %}
+		{% if products_and_prices %}
 			{% include "shop/snippets/products_list.html" %}
 		{% else %}
 			{% include "shop/snippets/categories_list.html" %}
