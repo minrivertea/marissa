@@ -14,15 +14,13 @@ class OrderAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('product', 'email', 'is_published')
 
+class PageAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
+    
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Address)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Shopper)
-admin.site.register(UniqueProduct)
-admin.site.register(Order, OrderAdmin)
-admin.site.register(Review, ReviewAdmin)
 admin.site.register(ShopSettings)
-admin.site.register(Page)
+admin.site.register(Page, PageAdmin)
 
 
 

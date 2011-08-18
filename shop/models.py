@@ -140,10 +140,10 @@ class ShopSettings(models.Model):
 
 
 class Page(models.Model):
-    slug = models.SlugField(max_length=80, 
-        help_text="No special characters or spaces, just lowercase letters and '-' please!")
     title = models.CharField(max_length=255, 
         help_text="The title of the page")
+    slug = models.SlugField(max_length=80, 
+        help_text="No special characters or spaces, just lowercase letters and '-' please!")
     parent = models.ForeignKey('self', blank=True, null=True, 
         help_text="Link this page to a higher level page - must be one of the 1st level navigation items!!")
     content = tinymce_models.HTMLField(
@@ -200,12 +200,12 @@ class Product(models.Model):
         help_text="The URL snippet - must be lowercase characters and '-' only please!")
     meta_title = models.CharField(max_length=200, blank=True, null=True, 
         help_text="The title that appears in the browser window and google search results.")		
-    description = models.TextField(
+    description = tinymce_models.HTMLField(
         help_text="A short description of the product, aimed at grabbing a user's attention.")
     meta_description = models.TextField(blank=True, null=True, 
         help_text="A 'hidden' description of the product, used by google in listings and for search rank.")
     super_short_description = models.CharField(max_length=200) # can be deleted, not used.
-    body_text = models.TextField(
+    body_text = tinymce_models.HTMLField(
         help_text="The main descriptive text. Can be long, aimed at giving a user full details about this product")
     long_description = models.TextField(blank=True, null=True) # can be deleted, not used
     image = models.ImageField(upload_to='images/product-photos')
