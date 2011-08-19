@@ -642,10 +642,16 @@ div.promo:hover {
 }
 
 div.promo div.image {
-    border: 1px solid #c1c1c1;
-    padding: 2px;
     float: left;
+    height: 150px;
     margin-right: 20px;
+    text-align: center;
+    width: 150px;
+}
+
+div.promo div.image img {
+  border: 1px solid #c1c1c1;
+  padding: 2px;	
 }
 
 div.promo:hover div.image img {
