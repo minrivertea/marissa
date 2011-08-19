@@ -509,13 +509,13 @@ ul#right-nav li a {
 }
 
 ul#right-nav li a.selected {
-  color: #333;  	
-  background-color: #77eb5c;
+  color: #fff;  	
+  background-color: #398C26;
 }
 
 ul#right-nav li a:hover {
-  color: #333;  	
-  background-color: #77eb5c;
+  color: #fff;  	
+  background-color: #398C26;
 }
 
 ul#right-nav ul.subnav {
