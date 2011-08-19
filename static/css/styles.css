@@ -617,16 +617,7 @@ p.introduction {
 }
 
 
-/* tea listing styles */
-
-div#teas {
-  padding-left: 0px;
-  margin-top: 30px;	
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  border-bottom: 3px dotted #e1e1e1;
-  float: left;
-}
+/* product listing styles */
 
 div.promo {
     float: left;
@@ -662,7 +653,7 @@ div.promo div.text {
   float: left;
   padding: 3px 10px;
   position: relative;
-  top: -15px;
+  top: -5px;
   left: 5px;
   background-color: #f9f9f9;
   border-bottom: 3px solid #e1e1e1;
