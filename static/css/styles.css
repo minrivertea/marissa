@@ -6,11 +6,11 @@ html {
 
 body {
   font-weight: 0.9em;
-  font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   background: url('') repeat-x scroll 50% 0 #fff;
   margin: 10px 0 0;
   padding: 0;
-  color: #666;
+  color: #444;
 }
 
 div#super {
@@ -20,13 +20,13 @@ div#super {
 
 h3 {
     color: #333;
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+    font-family: Verdana, sans-serif;
     margin: 0 0 5px;
 }
 
 div#main-text-wide div#left h3 {
     color: #444444;
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+    font-family: Georgia, serif;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: -0.5px;
@@ -82,7 +82,7 @@ a {
 }
 
 a:link, a:visited {
-  color: #50ce33;
+  color: #398c26;
 }
 
 a:hover, a:active {
@@ -161,7 +161,7 @@ div.footer-box {
 }
 
 div.footer-box h4 {
-  font-family:	"helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+  font-family:	Georgia, serif;
   letter-spacing: -1px;
   font-weight: bold;
   color: #666;
@@ -189,7 +189,7 @@ div.footer-box ul li {
 
 h1 {
     color: #333;
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+    font-family: Verdana, sans-serif;
     font-size: 2em;
     font-weight: bold;
     letter-spacing: -1px;
@@ -199,7 +199,7 @@ h1 {
 
 h2 {
     color: #666;
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+    font-family: Verdana, sans-serif;
     font-size: 1.8em;
     font-weight: normal;
     letter-spacing: -1px;
@@ -214,8 +214,8 @@ div#user-photos h2 {
 
 
 p {
-    color: #777777;
-    font-size: 13px;
+    color: #444;
+    font-size: 14px;
     line-height: 1.8em;
 }
 
@@ -247,7 +247,6 @@ div#header-messages {
     font-weight: bold;
     height: 0;
     margin: -53px auto 10px;
-    width: 170px;
     float: right;
 }
 
@@ -255,7 +254,6 @@ div#header-messages div.hm {
     -moz-border-radius-bottomleft: 5px;
     -moz-border-radius-bottomright: 5px;
     background-color: #f1f1f1;
-    width: 185px;
     float: right;
     padding: 8px 20px 10px 20px;
     text-align: right;
@@ -347,10 +345,10 @@ ul#nav li:not(:last-child) a {
 ul#nav li a {
     display: block;
     float: left;
-    font-family: 'Helvetica Neue';
+    font-family: Verdana, sans-serif;
     padding: 0px 13px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 ul#nav li a:hover {
@@ -366,12 +364,6 @@ ul#nav li a.selected {
 
 /* homepage styles */
 
-
-
-
-strong {
-    color: #666666;
-}
 
 div#add-a-photo {
   float: right;
@@ -480,7 +472,7 @@ div#home-extra a.see-more {
 }
 
 div#home-extra h4 {
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+    font-family: Verdana, sans-serif;
     font-size: 24px;
     font-weight: bold;
     letter-spacing: -1px;
@@ -502,7 +494,6 @@ ul#right-nav {
 }
 
 ul#right-nav li {
-  font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
   font-size: 12px;	
   font-weight: bold;
 }
@@ -585,7 +576,8 @@ div#main-text-wide div#left ul#categories li a {
 }
 
 div#main-text-wide div#left ul#categories li a:hover {
-  background-color: #77eb5c;
+  background-color: #398C26;
+  color: #fff;
 }
 
 div#main-text-wide div#left ul#categories ul.sub-categories {	
@@ -603,7 +595,8 @@ div#main-text-wide div#left ul#categories ul.sub-categories li a {
 }
 
 div#main-text-wide div#left ul#categories ul.sub-categories li a:hover {
-  background-color: #77eb5c;
+  background-color: #398C26;
+  color: #fff;
 }
 
 
@@ -649,7 +642,8 @@ div.promo:hover {
 }
 
 div.promo div.image {
-    box-shadow: 0 1px 6px #E1E1E1;
+    border: 1px solid #c1c1c1;
+    padding: 2px;
     float: left;
     margin-right: 20px;
 }
@@ -729,53 +723,12 @@ div.image-top {
   margin-bottom: 10px;
 }
 
-div.tea-promo h4 {
-  margin-bottom: 0px;
-  margin-top: 0;
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    border-bottom: none;	
-}
-
-div.tea-promo h4 a {
-  color: #439249;
-}
-
-div.tea-promo:hover h4 a {
-  text-decoration: underline;	
-}
-
-
-div.tea-promo p {
-  margin-top: 0px;
-  font-size: 13px;	
-  margin-left: 0px;
-  margin-bottom: 10px;
-  float: left;
-  height: 80px;
-}
-
-
-
-div.tea-promo div.price {
-    color: #439249;
-    float: right;
-    font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: -2px;
-    margin: 0 20px 5px 10px;
-    position: relative;
-}
 
 
 
 div#right p {
   margin: 0 0 10px 0;
-  padding: 0;
-  font-size: 13px;	
+  padding: 0;	
 }
 
 div#right p.small {
@@ -946,7 +899,6 @@ input.submit-button:active {
 label {
     color: #333333;
     font-size: 12px;
-    font-family: Arial, sans-serif;
     font-weight: bold;
     margin-left: 0px;
     float: left;
@@ -1138,7 +1090,6 @@ div#right div.about-box h3 {
 }
 
 div.flatpage div#right h4 {
-  font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
   color: black;
   font-weight: bold;
   font-size: 15px;	
@@ -1224,7 +1175,7 @@ div#blog-right div.box.clear h4 {
   font-weight: bold;
   border-bottom: 0;
   padding-bottom: 0;
-  font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+
 }
 
 div#blog-right div.box.clear p {
@@ -1298,23 +1249,6 @@ div#right div.like div.text p {
   font-size: 12px;
 }
 
-
-div.rss {
-  position: relative;
-  top: 35px;
-  right:20px;
-  float: right;
-  font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-div.rss img {
-  position: relative;
-  top: 4px;	
-}
-
 div.info {
     border-bottom: 3px dotted #F7D2D2;
     float: left;
@@ -1335,11 +1269,6 @@ div#right p.mail {
     margin: 15px 0 0 0;
     width: 245px;
     position: relative;
-}
-
-div#right a.title {
-  font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
-  font-weight: 900;	
 }
 
 div#right p.mail:hover img.mail-icon {
@@ -1399,214 +1328,6 @@ div#main-text-wide div#left img.about {
     margin-left: 20px;
 }
 
-
-.did-you-know {
-   position:relative;
-   width:460px;
-   padding: 15px;
-   float: left;
-   color:#fff;
-   background:#f3f3f3;
-   margin-top: 20px;
-   border: 1px solid #e1e1e1;
-   z-index: 3;
-   border-radius: 5px;
-   background-image: -moz-linear-gradient(#f3f3f3, #f9f9f9);
-   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f3f3f3), to(#f9f9f9));
-   background-image: -webkit-linear-gradient(#f3f3f3, #f9f9f9); 
-   background-image: -o-linear-gradient(#f3f3f3, #f9f9f9);
-}
-
-div#right .did-you-know {
-  width: 190px;
-  margin-top: 0px;
-  padding: 10px;  	
-}
-
-div#right .did-you-know p, .did-you-know-p {
-  font-size: 11px;
-  margin: 0;	
-}
-
-.did-you-know span.link {
-  position:absolute;
-  width:100%; 
-  height:100%; 
-  top:0; 
-  left: 0; 
-  z-index: 1;		
-}
-
-.did-you-know:hover {
-  border: 1px solid #84c37d;
-}
-
-.did-you-know:hover:after {
-  border-bottom: 15px solid #84c37d;	
-}
-   
-
-
-/* this is the background of the arrow */
-.did-you-know:after {
-        content: " ";
-        display: block;
-        width: 0;
-        height: 0;
-        border-bottom: 15px solid #e1e1e1;         
-        border-top: 0;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        position: absolute;
-        top: -15px;
-        left: 29px;
-        z-index: 1;
-        margin-left: ;
-}
-
-/* this is the foreground of the arrow */
-.did-you-know:before {
-        content: " ";
-        display: block;
-        width: 0;
-        height: 0;
-        border-bottom: 15px solid hsla(0,0%,95%,1);     
-        border-top: 0;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        position: absolute;
-        top: -14px;
-        left: 30px;
-        z-index: 2;
-        margin-left: -1px;
-}
-
-div#main-text-wide div#left div.did-you-know h3, div.did-you-know h3 {
-    color: #439249;
-    font-family: Helvetica,sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-    text-shadow: 0 2px 0 #FFFFFF;
-}
-
-div#main-text-wide div#left div.did-you-know h3 span.grey, div.did-you-know h3 span.grey {
-  text-align: right;
-  font-size: 14px;
-  padding-left: 10px;	
-}
-
-div#main-text-wide div#left div.did-you-know p {
-    font-size: 12px;
-    margin: 5px 0 0 0;
-    line-height: 1.5em;
-}
-
-div#main-text-wide div#left div.did-you-know img {
-  float: left; 
-  margin-right: 10px;
-  position: relative;
-  top: 8px;	
-}
-
-div#comments {
-  border-bottom: 3px dotted #e1e1e1;
-  margin-bottom: 20px;
-  float: left;	
-  width: 560px;
-  padding-bottom: 20px;
-}
-
-div#main-text-wide div#left div#comments h3 {
-    background-color: #F1F1F1;
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 0 1px 1px #C1C1C1;
-    float: left;
-    font-size: 24px;
-    margin: 10px 0 0 -20px;
-    padding: 15px 45px 15px 30px;
-    position: relative;
-}
-
-div#comments h3:before {
-        content: " ";
-        display: block;
-        width: 0;
-        height: 0;
-        border-bottom: 30px solid hsla(0,0%,95%,1);     
-        border-top: 0;
-        border-left: 0px solid transparent;
-        border-right: 50px solid transparent;
-        position: absolute;
-        top: -15px;
-        left: 1px;
-        z-index: 2;
-        margin-left: -1px; 
-}
-
-div#comments div#comments-list {
-    float: left;
-    margin-top: 20px;
-    width: 100%;
-}
-
-div#comments div#comments-list div.comment {
-  border-bottom: 1px solid #e1e1e1;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  float: left;	
-  width: 100%;
-}
-
-div#comments div#comments-list div.comment p {
-  	margin: 0;
-  	padding: 0;
-}
-
-div#comments div#comment-form #form {
-  	float: left;
-  	margin-top: 30px;
-}
-
-div#comments div#comment-form label {
-  width: 100px;	
-}
-
-div#comments div#comment-form input, div#comments div#comment-form textarea {
-  width: 400px;	
-}
-
-div#comments div#comment-form input.submit-preview {
-  display: none;	
-}
-
-div#comments div#comment-form input.submit-post {
-  float: right;
-  width: 200px;
-  padding: 10px 15px;
-  height: 40px;
-  border-radius: 7px;
-  margin-top: 10px;
-   background-image: -moz-linear-gradient(#f3f3f3, #f9f9f9);
-   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f3f3f3), to(#f9f9f9));
-   background-image: -webkit-linear-gradient(#f3f3f3, #f9f9f9); 
-   background-image: -o-linear-gradient(#f3f3f3, #f9f9f9);
- font-weight: bold;
- font-family: Helvetica, sans-serif;
- font-size: 15px;
- text-shadow: 0 1px 1px #fff;	
- position: relative;
-}
-
-div#comments div#comment-form input.submit-post:hover {
-  border-color: #439249;
-  cursor: pointer;
-  color: #439249;
-}
-
-div#main-text-wide div#left div#comments div#comment-form p {
-  margin: 0;	
-}
 
 button.prev {
     background: url("/images/prev-arrow.png") no-repeat scroll center top transparent;

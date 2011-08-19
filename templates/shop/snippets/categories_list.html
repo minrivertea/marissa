@@ -3,7 +3,7 @@
       <div class="promo category">
       	  <a class="link" title="{{ c.title }} click to view more details" href="{% url category c.slug %}"><span class="link"></span></a>	
       	  <div class="image">
-			{% thumbnail c.image "300x300" crop="center" as im %}
+			{% thumbnail c.image "150x150" crop="center" as im %}
 			<img alt="a picture of {{ c.name }}" title="{{ c.name }} click to view more details" class="promo" src="{{ im.url }}"/>
 			{% endthumbnail %}
 		  </div>

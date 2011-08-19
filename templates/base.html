@@ -57,15 +57,21 @@
 <div id="super">
     <div id="container">
     
-		{% if request.user.is_authenticated %}
-	    <div id="header-messages"> 
-	    	<div class="hm"><a href="/account/" title="" alt="">Your account</a> | <a href="{% url auth_logout %}">Logout</a>
-	    	{% if request.user.is_superuser %}   
-		   	| <a href="/admin/">Admin</a>
-		   	{% endif %}
+		
+	    <div id="header-messages"> 	
+	  	 	<div class="hm">
+	  	 		<a class="" href="/contact-us/" title="" alt="">Contact us</a> | 
+	    		{% if request.user.is_authenticated %}
+	    		<a href="/account/" title="" alt="">Your account</a> | <a href="{% url auth_logout %}">Logout</a>
+	    			{% if request.user.is_superuser %}   
+		   			| <a href="/admin/">Admin</a>
+		   			{% endif %}
+	    		{% else %}
+	    		<a href="/accounts/login/" title="" alt="">Login</a> 
+		   		{% endif %}
 		   	</div>
 		</div>    
-		{% endif %}
+		
     	
 	    <div id="header">
 	    	<div id="logo">
@@ -91,24 +97,19 @@
 	    	    		<a class="{% nav_selected request '^/$' %}" href="{% url home %}" title="">Home</a>
 	    	    	</li>
 	    	        <li>
+	    	           <a class="{% nav_selected request '^/about-us/' %}" href="/about-us/" title="" alt="">About us</a>
+	    	        </li>
+	    	        <li>
 	    	        	<a class="{% nav_selected request '^/products/' %}" href="{% url categories %}" title="" alt="">Products</a>
 	    	        </li>
 	    	        <li>
 	    	        	<a class="{% nav_selected request '^/services/' %}" href="/services/" title="" alt="">Services</a>
 	    	        </li>
 	    	        <li>
-	    	        	<a class="{% nav_selected request '^/about-us/' %}" href="/about-us/" title="" alt="">About us</a>
+	    	        	<a class="{% nav_selected request '^/our-pledge/' %}" href="/our-pledge/" title="" alt="">Our pledge</a>
 	    	        </li>
-	    	        <li>
-	    	        	<a class="" href="/contact-us/" title="" alt="">Contact us</a>
-	    	        </li>
-	    	        {% if request.user.is_authenticated %}
-	    	        {% else %}
-	    	        <li>
-	    	        	<a href="/accounts/login/" title="" alt="">Login</a>
-	    	        </li>
-	    	        {% endif %}
-	    	        
+
+	    	       
 	  			</ul>
 			</div>
 			

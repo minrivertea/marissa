@@ -21,6 +21,7 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(ShopSettings)
 admin.site.register(Page, PageAdmin)
+admin.site.register(Shopper)
 
 
 

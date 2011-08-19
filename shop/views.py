@@ -129,7 +129,7 @@ def product_view(request, slug):
             
     
     prices = UniqueProduct.objects.filter(parent_product=product, is_active=True).order_by('price')
-    other_products = Product.objects.filter(is_active=True, category=product.category).exclude(id=product.id)
+    other_products = Product.objects.filter(is_active=True, category=product.category).exclude(id=product.id)[:5]
     reviews = Review.objects.filter(product=product.id, is_published=True)[:2]
     
     if request.method == 'POST':
@@ -791,7 +791,16 @@ def send_sampler_email(request, id):
     
 @login_required   
 def account(request):
-    shopper = request.user.get_profile()
+    try:
+        shopper = request.user.get_profile()
+    except:
+        shopper = Shopper.objects.create(
+            user = request.user,
+            email = request.user.email,
+            first_name = request.user.first_name,
+            last_name = request.user.last_name,    
+        )
+        
     orders = Order.objects.filter(owner=shopper).order_by('-date_confirmed')
     latest_products = Product.objects.all().order_by('-id')
     return render(request, "shop/account.html", locals())   

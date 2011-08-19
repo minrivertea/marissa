@@ -2,51 +2,8 @@
 {% load thumbnail %}
 {% load django_static %}
 
-{% block metadescription %}{% if product.meta_description %}{{ product.meta_description|safe }}{% else %}{{ product.name }} - {{ product.description|safe }}{% endif %}{% endblock %}
+{% block metadescription %}{% if product.meta_description %}{{ product.meta_description }}{% else %}{{ product.name }} - {{ product.description|striptags }}{% endif %}{% endblock %}
 {% block pagetitle %}{% if product.meta_title %}{{ product.meta_title }}{% else %}{{ product.name }}{% endif %}{% endblock %}
-
-{% block extrajs %}
-<script>
-$(function() {
-
-$(".scrollable").scrollable();
-
-$(".items img").hover(function() {
-
-	// see if same thumb is being clicked
-	if ($(this).hasClass("active")) { return; }
-
-	// calclulate large image's URL based on the thumbnail URL (flickr specific)
-	var url = $(this).attr("alt");
-	
-	// get handle to element that wraps the image and make it semi-transparent
-	var wrap = $("#image_wrap").fadeTo("medium", 0.5);
-
-	// the large image from www.flickr.com
-	var img = new Image();
-    
-	// call this function after it's loaded
-	img.onload = function() {
-
-		// make wrapper fully visible
-		wrap.fadeTo("fast", 1);
-
-		// change the image
-		wrap.find("img").attr("src", url);	
-
-	};
-
-	img.src = url;
-
-	// activate item
-	$(".items img").removeClass("active");
-	$(this).addClass("active");
-
-}).filter(":first").hover();
-});
-</script>
-
-{% endblock %}
 
 {% block extracss %}
 
@@ -269,7 +226,6 @@ div.product-top div.description {
 }
 
 div.product-top div.description p {
-    font-size: 13px;
     margin-top: 0;
 }
 
@@ -442,17 +398,17 @@ div.full-description {
 }
 
 div.contact {
-  float: left;
+  float: right;
   width: 400px;
   background-color: #f1f1f1;
   border-radius: 10px;
   padding: 10px 15px;
-  margin-left: -10px;	
+  margin: 20px 0 0 -10px;	
 }
 
 div.contact p {
   margin: 0 0 20px 0;	
-  font-size: 11px;
+  font-size: 13px;
 }
 
 div.contact p.message {
@@ -486,14 +442,13 @@ div.contact input.submit {
   height: 32px;
   background-color:#666;
   color: #fff;
-  font-family: Arial, sans-serif;
   font-weight: bold;
   border: none;
 }
 
 div.contact input.submit:hover {
   cursor: pointer;
-  background-color: #50CE33;	
+  background-color: #398c26;	
 }
 
 </style>
@@ -511,9 +466,15 @@ div.contact input.submit:hover {
 	
 	<div class="product-top">
 		<div class="main-image">
-				{% thumbnail product.image "500" as im %}
+				{% if product.image|is_portrait %}
+					{% thumbnail product.image "x500" as im %}
 					<img class="product-small" alt="{{ im.url }}" title="{{ product.image_caption }}" src="{{ im.url }}"/>
-				{% endthumbnail %}
+					{% endthumbnail %}				
+				{% else %}
+					{% thumbnail product.image "500" as im %}
+					<img class="product-small" alt="{{ im.url }}" title="{{ product.image_caption }}" src="{{ im.url }}"/>
+					{% endthumbnail %}
+				{% endif %}
 				
 				{% if other_products %}
 				<h4>Other products from the <a href="{% url category product.category.slug %}">{{ product.category }}</a> category</h4>
@@ -526,6 +487,7 @@ div.contact input.submit:hover {
 		</div>
 		
 		<div class="description">
+		    <h3>Product details</h3>
 			{{ product.description|safe }}
 		</div>
 	
@@ -587,8 +549,7 @@ div.contact input.submit:hover {
 
 
 		<div class="full-description">
-			<h3>Product details</h3>
-			{{ product.body_text|safe }}
+			<p></p>
 		</div>	
 		
 
