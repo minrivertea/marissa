@@ -555,7 +555,7 @@ div#main-text-wide {
 
 div#main-text-wide div#left {
     float: left;
-    margin: 0 20px 20px 0px;
+    margin: 0 40px 20px 0px;
     width: 200px;
 }
 
@@ -605,7 +605,7 @@ div#main-text-wide div#left ul#categories ul.sub-categories li a:hover {
 div#main-text-wide div#right {
     float: left;
     padding-left: 0;
-    width: 740px;
+    width: 720px;
 }
 
 p.introduction {
