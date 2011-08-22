@@ -397,6 +397,11 @@ div.messenger div {
 }
 
 
+div#products {
+  float: left;
+  margin-top: 20px;	
+}
+
 
 
 /* homepage styles */
