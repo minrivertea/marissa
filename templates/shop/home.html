@@ -11,9 +11,9 @@
 <script>
 $(function() {
 	$(".scroll.one").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3500 });
-	$(".scroll.two").scrollable({ vertical: true, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3800 });
+	$(".scroll.two").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3800 });
 	$(".scroll.three").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4300 });
-	$(".scroll.four").scrollable({ vertical: true, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4600 });
+	$(".scroll.four").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4600 });
 });
 </script>
 {% endblock %}
@@ -59,7 +59,7 @@ div#text p.subtitle span {
 	
 	/* root element for the scroll pics */
 	.scroll.two .pics, .scroll.four .pics {
-		width:250px;
+		width:20000em;
 		position:absolute;
 		clear:both;
 	}
@@ -128,7 +128,10 @@ h1 {
 		</div>
 	</div>
 
-
+	<div class="links">
+		<a href="{% url categories %}">View our products &raquo;</a>
+		<a href="/contact-us/">Can't find what you're looking for?</a>
+	</div>
 	
 </div>
 

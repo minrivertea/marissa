@@ -8,66 +8,6 @@
 {% block extracss %}
 
 <style type="text/css">
-div.more-info {
-  padding-left: 0px;
-  margin-bottom: 15px;
-  padding-top: 15px;	
-  border-top: 1px solid #e1e1e1;
-  margin-top: 15px;
-}
-
-#home-banner p.normal {
-    font-size: 15px;
-    width: 500px;
-}
-
-h3.more-info {
-    margin-bottom:10px;
-    margin-top: -3px;
-    padding-bottom: 0;
-}
-
-div.right-links h3.more-info {
-  margin-bottom: 15px;	
-  float: left;
-  width: 220px;
-}
-
-
-div.other-teas {
-    float: left;
-    margin: 0 0 10px 10px;
-    width: 500px;
-}
-
-div.other-tea {
-    border-bottom: 1px solid white;
-    color: #666666;
-    float: left;
-    font-size: 0.9em;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    width: 460px;
-}
-
-div.other-tea.last {
-  border-bottom: none;	
-}
-
-div.other-tea div.image {
-  float: left;
-  margin-right: 15px;
-}
-
-div.other-tea div.text {
-  margin-top: 2px;	
-}
-
-div.other-teas h3 {
-  font-size: 1.5em;
-  text-shadow: 1px 1px #fff;
-  margin-bottom: 20px;
-}
 
 div.product-photos-small {
     float: left;
@@ -100,24 +40,6 @@ div.product-photos-small p {
     margin-top: 20px;
     text-align: right;
     width: 100px;
-}
-
-div.right-links {
-  padding-top: 0px;	
-  float: left;
-}
-
-div.right-links ul {
-    margin: 0 0 0 0;
-    padding-left: 15px;
-}
-
-div.right-links ul li {
-    color: #666666;
-    font-size: 13px;
-    list-style-type: square;
-    margin-bottom: 10px;
-    padding-left: 0;
 }
 
 div.product-top {
@@ -403,7 +325,7 @@ div.contact {
   background-color: #f1f1f1;
   border-radius: 10px;
   padding: 10px 15px;
-  margin: 20px 0 0 -10px;	
+  margin: 20px 0 0px -10px;	
 }
 
 div.contact p {
@@ -449,6 +371,16 @@ div.contact input.submit {
 div.contact input.submit:hover {
   cursor: pointer;
   background-color: #398c26;	
+}
+
+div.links {
+  width: 425px;
+  margin: 0;	
+}
+
+div.links a {
+  background-color: #fff;
+  font-size: 14px;
 }
 
 </style>
@@ -545,7 +477,12 @@ div.contact input.submit:hover {
 		    <input type="submit" value="Submit" class="submit">
 		    </form>
 			{% endif %}
-		</div>		
+		</div>
+		
+		
+	<div class="links">
+		<h4><a href="">Can't find what you're looking for? Contact us</a></h4>
+	</div>		
 
 
 		<div class="full-description">

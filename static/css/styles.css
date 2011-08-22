@@ -120,24 +120,21 @@ div#footer {
   margin-top: 30px;
   float: left;
   padding-top: 20px;
+  border-top: 1px solid #e1e1e1;
 }
 
 ul.footer-links {
-  width: 960px;
+  width: 230px;
   float: left;
-  margin-left: 0px;
+  margin-left: 20px;
   padding-left: 0;
   margin-bottom: 80px;	
 }
 
 ul.footer-links li {
-  display: inline;
+  display: ;
   color: #333;
-  font-size: 0.9em;
-}
-
-ul.footer-links li a {
-  color: #666;	
+  font-size: 15px;
 }
 
 div.payments {
@@ -361,6 +358,46 @@ ul#nav li a.selected:hover {
 ul#nav li a.selected {
     color: #333;
 }
+
+div.links {
+  float: right;
+  width: 400px;
+  margin-top: 20px;
+}
+
+div.links a {
+  float: right;
+  background-color: #f1f1f1;
+  padding: 10px 15px;	
+  border-radius: 5px;
+  margin: 0 20px 10px 0;
+}
+
+div.links a:hover {
+  background-color: #398C26;
+  color: #fff;	
+}
+
+div.messenger {
+  float: left;
+  width: 100%;
+  padding-right: 20px;	
+}
+
+div.messenger span {
+  position: relative;
+  left: 20px;
+  top: 8px;
+  font-size: 12px;
+  font-weight: bold;	
+}
+
+div.messenger div {
+  float: left;	
+}
+
+
+
 
 /* homepage styles */
 
@@ -625,6 +662,7 @@ div.promo {
     padding: 0px 0px 20px 0px;
     position: relative;
     width: 160px;
+    height: 200px;
 }
 
 
@@ -1005,63 +1043,6 @@ div#right div.message p {
 }
 
 
-/* About styles */
-
-div.flatpage div#left {
-    float: left;
-    width: 500px;
-}
-
-div.flatpage p {
-  margin-top: 0;
-  margin-bottom: 30px;	
-}
-
-div.flatpage h3 {
-  color: #BE373A;
-  font-weight: bold;	
-}
-
-div.flatpage a.more {
-
-}
-
-div.flatpage div.about-box ul {
-  margin: 0;
-  padding-left: 20px;
-  margin-top: 10px;
-
-}
-
-div.flatpage div.about-box li {
-  font-size: 13px;
-  list-style-type: square;	
-    color: #000;
-}
-
-div.flatpage div#right img.social-footer {
-    float: left;
-    margin-bottom: 20px;
-    margin-left: -10px;
-}
-
-div.flatpage div#right p.social-footer {
-  width: 100px;
-  font-size: 0.7em;
-  float: left;
-  margin: 5px 0 0 10px;	
-}
-
-div.flatpage ul {
-  margin-bottom: 30px;	
-}
-
-div.flatpage ul li {
-  font-size: 17px;
-  color: #666;
-  line-height: 1.5em	
-}
-
 div.about-box {
     border-radius: 10px 10px 10px 10px;
     float: left;
@@ -1105,289 +1086,5 @@ div.about-box a.promo {
   margin-top: 10px;	
 }
 
-div.about-box img.first {
-    border-bottom: 5px solid #FFFFFF;
-    left: -15px;
-    margin-bottom: -5px;
-    position: relative;
-    top: -15px;
-}
 
-
-
-div.about-box h3 {
-  margin: 0 0 5px 0px;
-  color: #BE373A;
-  font-weight: normal;
-  font-size: 20px;
-}
-
-
-img.map {
-  margin-left: 10px;
-  margin-bottom: 5px;	
-}
-
-div.left p.caption, div.flatpage p.caption {
-  font-size: 0.8em;
-  padding-left: 10px;
-  color: #000;
-  
-}
-
-
-/* blog styles */
-
-div#blog-left {
-    float: left;
-    margin-left: 20px;
-    width: 520px;
-}
-
-div#blog-right {
-    float: right;
-    width: 220px;
-    border-left: 1px solid #e1e1e1;
-}
-
-div#blog-right div.box {
-    -moz-border-radius: 10px 10px 10px 10px;
-    background-color: #FFEBEB;
-    margin: 0 0 20px 20px;
-    padding: 15px 15px 15px 15px;
-    width: 200px;
-    float: left;
-}
-
-div#blog-right div.box.clear {
-  background-color: #fff;
-  padding: 0;
-  -moz-border-radius: 0px;	
-}
-
-div#blog-right div.box.clear h4 {
-  margin: 0;
-  font-size: 17px;
-  color: #BE373A;	
-  font-weight: bold;
-  border-bottom: 0;
-  padding-bottom: 0;
-
-}
-
-div#blog-right div.box.clear p {
-  margin-top: 0;
-  font-size: 13px;
-  color: #000;	
-}
-
-div#blog-right div.box.clear p.link {
-  margin-top: -10px;
-  margin-left: 5px;
-}
-
-p.countries {
-  text-align: right;
-  font-size: 11px;
-  width: 500px;
-  float: right;	
-  margin-bottom: 0;
-  padding-right: 20px;
-}
-
-img.flag {
-  position: relative;
-  top: 4px;	
-  margin-right: 3px;
-}
-div.about-box img.flag {
-  top: 1px;	
-}
-
-div.right-image {
-  float: left;
-  margin-bottom: 20px;	
-}
-
-div.like {
-  float: left;	
-  margin-top: 10px;
-  border-bottom: 3px dotted #e1e1e1;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
-}
-
-div.like.last {
-  border-bottom: none;	
-}
-
-div.like div.image {
-  float: left;
-  margin-right: 10px;	
-}
-
-div#blog-right div.box.clear div.like p.description {
-  color: #666;	
-  line-height: 14px;
-  font-size: 12px;
-}
-
-div.like a {
-  font-size: 13px;	
-}
-
-div.like div.text {
-  float: left;
-  width: 160px;
-}
-
-div#right div.like div.text p {
-  line-height: 1.2em;
-  font-size: 12px;
-}
-
-div.info {
-    border-bottom: 3px dotted #F7D2D2;
-    float: left;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    width: 240px;
-}
-
-div.info.last {
-  border-bottom: none;	
-}
-
-div#right p.mail {
-    float: left;
-    font-size: 12px;
-    height: 55px;
-    line-height: 1.2em;
-    margin: 15px 0 0 0;
-    width: 245px;
-    position: relative;
-}
-
-div#right p.mail:hover img.mail-icon {
-  opacity: 0.8;	
-}
-
-div#right p.mail:hover a.title {
-  text-decoration: underline;	
-}
-
-div#right p.mail span.link {
-  position:absolute;
-  width:100%; 
-  height:100%; 
-  top:0; 
-  left: 0; 
-  z-index: 1;	
-}
-
-img.mail-icon {
-    border-radius: 5px 5px 5px 5px;
-    float: left;
-    margin-right: 10px;
-    position: relative;
-}
-
-span.red {
-  color: #BE373A;	
-}
-
-div#main-text-wide div#left div.box {
-  width: 230px;
-  float: left;
-  margin-right: 20px;	
-}
-
-div#main-text-wide div#left div.box p {
-  padding: 10px;
-  background-color: #e1e1e1;
-  margin: 0;
-}
-
-div#main-text-wide div#left div.caption {
-    background-color: #F1F1F1;
-    float: left;
-    font-size: 11px;
-    margin-bottom: 20px;
-    padding: 10px;	
-}
-
-div#main-text-wide div#left div.caption.wide {
-    width: 510px;
-}
-
-div#main-text-wide div#left img.about {
-    float: right;
-    margin-left: 20px;
-}
-
-
-button.prev {
-    background: url("/images/prev-arrow.png") no-repeat scroll center top transparent;
-    border: medium none;
-    cursor: pointer;
-    float: left;
-    height: 45px;
-    left: 10px;
-    position: relative;
-    top: -240px;
-    width: 46px;
-    z-index: 4;
-}
-
-button.prev:hover {	
-  background: url('/images/prev-arrow.png') no-repeat scroll bottom transparent;
-}
-
-button.next {
-    background: url("/images/next-arrow.png") no-repeat scroll center top transparent;
-    border: medium none;
-    cursor: pointer;
-    float: right;
-    height: 45px;
-    left: -40px;
-    position: relative;
-    top: -240px;
-    width: 46px;
-    z-index: 4;
-}
-
-button.next:hover {
-  	background: url("/images/next-arrow.png") no-repeat scroll bottom transparent;
-}
-
-div#basket {
-    background-color: #F9F9F9;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px 10px 10px 10px;
-    float: left;
-    font-size: 0.9em;
-    margin: 0px 0 20px 0;
-    padding: 30px;
-    width: 890px;
-}
-
-div.learn-box {
-  float: left;
-  border-bottom: 3px dotted #e1e1e1;	
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-
-div#products {
-  margin-top: 30px;	
-}
-
-div.info {
-    float: left;
-    margin-bottom: 20px;
-    width: 160px;
-    border: none;
-    background-color: #f6f6f6;
-    padding: 10px 20px;
-}
 

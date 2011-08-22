@@ -45,13 +45,10 @@ def index(request):
     # load variables 
     featured = Product.objects.filter(is_active=True, is_featured=True)      
     featured_one = featured[0:2]
-    featured_two = featured[3:4]
+    featured_two = featured[2:4]
     featured_three = featured[5:6] 
     featured_four = featured[7:8]  
-    prices = UniqueProduct.objects.filter(is_active=True)
-    review = Review.objects.all()[:2]
-    
-    
+        
     return render(request, "shop/home.html", locals())
 
 def page(request, slug, sub_page=None):
@@ -60,10 +57,16 @@ def page(request, slug, sub_page=None):
     else:
         page = get_object_or_404(Page, slug=slug)
     
+    try:
+        if request.session['MESSAGE'] == "1":
+            message = True
+            request.session['MESSAGE'] = ""
+    except:
+        pass 
+    
     if page.template:
         return render(request, page.template, locals())
     else:
-    
         return render(request, "shop/page.html", locals())
     
 # the product listing page
@@ -171,12 +174,7 @@ def product_view(request, slug):
     return render(request, "shop/product_view.html", locals())
     
 def contact_us(request):
-    try:
-        if request.session['MESSAGE'] == "1":
-            message = True
-            request.session['MESSAGE'] = ""
-    except:
-        pass 
+
         
     if request.method == 'POST':
         form = ContactForm(request.POST)

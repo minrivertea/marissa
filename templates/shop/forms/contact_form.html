@@ -50,7 +50,7 @@ div.form input.submit {
 
 div.form input.submit:hover {
   cursor: pointer;
-  background-color: #50CE33;	
+  background-color: #398C26;	
 }
 
 div#right div.form p.help-text {
@@ -59,7 +59,7 @@ div#right div.form p.help-text {
 }
 
 p.message {
-    color: #50CE33;
+    color: #398C26;
     font-size: 16px;
     font-weight: bold;
     margin: 0;
@@ -69,9 +69,9 @@ p.message {
 </style>
 {% endblock %}
 
-{% block metadescription %}Contact {{ sitename }} - how you can get in touch with us.{% endblock %}
+{% block metadescription %}{{ page.meta_description }}{% endblock %}
 
-{% block pagetitle%}Contact us{% endblock %}
+{% block pagetitle%}{{ page.title }}{% endblock %}
 
 
 
@@ -79,25 +79,26 @@ p.message {
 
 <div id="main-text-wide">
 
-<div id="left">
-
-{% include "shop/snippets/pages_nav.html" %}
-
-	<div class="info">
-		<h4>We're on twitter!</h4>
-		<p>If you want to get in touch, why not send us a message on twitter?</p>
+	<div id="left">
+		{% include "shop/snippets/pages_nav.html" %}
 	</div>
-	
-</div>
 
-<div id="right">
-		<h1>Contact Us</h1>
+	<div id="right">
+		<h1>{{ page.title }}</h1>
 	
 	    {% if message %}
 	        <p class="message">* Thanks - we've received your message and we'll get back to you as soon as possible.</p>
 	    {% endif %}
 	
-		{{ shopsettings.contact_us_page|safe }}
+		{{ page.content|safe }}
+		
+		<div class="messenger">
+		<script type="text/javascript" src="http://settings.messenger.live.com/controls/1.0/PresenceButton.js"></script>
+		<div id="Microsoft_Live_Messenger_PresenceButton_454b804f45e7a9c0" msgr:width="100" msgr:backColor="#92D6AE" msgr:altBackColor="#FFFFFF" msgr:foreColor="#424542" msgr:conversationUrl="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=454b804f45e7a9c0@apps.messenger.live.com&mkt=en-US&useTheme=true&themeName=green&foreColor=333333&backColor=DCF2E5&linkColor=333333&borderColor=8ED4AB&buttonForeColor=2C0034&buttonBackColor=CFE9D9&buttonBorderColor=8ED4AB&buttonDisabledColor=CFE9D9&headerForeColor=006629&headerBackColor=92D6AE&menuForeColor=006629&menuBackColor=FFFFFF&chatForeColor=333333&chatBackColor=F4FBF7&chatDisabledColor=F6F6F6&chatErrorColor=760502&chatLabelColor=6E6C6C"></div>
+<script type="text/javascript" src="http://messenger.services.live.com/users/454b804f45e7a9c0@apps.messenger.live.com/presence?dt=&mkt=en-US&cb=Microsoft_Live_Messenger_PresenceButton_onPresence"></script>
+	<span>&laquo; Chat with us now!</span>
+	
+		</div>
 		
 		{% if form.errors %}
 			{{ form.errors }}
@@ -131,7 +132,6 @@ p.message {
 					
 					</div>
 
-</div>
 					
 				</form>
 
