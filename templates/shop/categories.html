@@ -50,7 +50,7 @@ div#right div.promo.category div.text p {
 	</h1>
 	
 	
-		{% if category %}
+		{% if category %}		
 		{{ category.description|safe }}
 		{% else %}
 		{{ shopsettings.product_page_description|safe }}

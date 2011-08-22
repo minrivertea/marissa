@@ -7,13 +7,11 @@
 	<!-- if it's got no parent (top nav) or it's a sub-sub page, don't show it -->
     {% if not p.parent %}
     {% else %}
-    
         {% if p.parent.slug in request.path %}
 		<li>
-		    <a class="{% if p.slug in request.path %}selected{% endif %}" href="{% url sub_page p.parent.slug p.slug %}">{{ p.title }}</a>		    
+		    <a class="{% if p.slug in request.path %}selected{% endif %}" href="{% url sub_page p.parent.slug p.slug %}">{{ p.title }}</a>
 		</li>
 		{% endif %}
-		
 	{% endif %}
   {% endfor %}
 </ul>

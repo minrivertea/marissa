@@ -175,6 +175,15 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
     
+    def get_absolute_url(self):
+        url = '/products/%s/' % self.slug
+        if self.parent:
+            url = '/products/%s/%s/' % (self.parent.slug, self.slug)
+ #       if self.parent.parent:
+ #           url = '/%s/%s/%s/' % (self.parent.parent.slug, self.parent.slug, self.slug)
+        
+        return url
+    
     def get_children(self):
         children = Category.objects.filter(parent=self)
         return children
