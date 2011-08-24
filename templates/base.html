@@ -60,7 +60,11 @@
 		
 	    <div id="header-messages"> 	
 	  	 	<div class="hm">
-	  	 		<a class="" href="/contact-us/" title="" alt="">Contact us</a> | 
+	  	 		<a class="" href="/contact-us/" title="" alt="">Contact us</a>
+	  	 		
+	  	 		<a target="_blank" href="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=454b804f45e7a9c0@apps.messenger.live.com&mkt=en-IE"><img style="border-style: none;" src="http://messenger.services.live.com/users/454b804f45e7a9c0@apps.messenger.live.com/presenceimage?mkt=en-IE" width="16" height="16" /></a>
+	  	 		
+	  	 		 | 
 	    		{% if request.user.is_authenticated %}
 	    		<a href="/account/" title="" alt="">Your account</a> | <a href="{% url auth_logout %}">Logout</a>
 	    			{% if request.user.is_superuser %}   
@@ -69,6 +73,7 @@
 	    		{% else %}
 	    		<a href="/accounts/login/" title="" alt="">Login</a> 
 		   		{% endif %}
+		   		
 		   	</div>
 		</div>    
 		
