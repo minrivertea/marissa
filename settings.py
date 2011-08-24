@@ -107,7 +107,7 @@ INSTALLED_APPS = (
 
 # Random app information for different things
 GA_IS_ON = False
-PROJECT_NAME = 'Marissa'
+PROJECT_NAME = 'WeSourceFactories'
 PROJECT_EMAIL = 'sales@wesourcefactories.com'
 PROJECT_URL = 'http://www.wesourcefactories.com'
 SHIPPING_PRICE = '3'
