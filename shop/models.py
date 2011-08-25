@@ -234,7 +234,11 @@ class Product(models.Model):
         help_text="If not ticked, the product won't be visible on the site at all.")
     is_private = models.BooleanField(default=False, 
         help_text="If ticked, this product will only be visible to logged in users.")
-        
+    
+    class Meta:
+        ordering = ["name"]
+        verbose_name_plural = "oxen"
+     
     def __unicode__(self):
         return self.name
       
