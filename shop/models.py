@@ -237,7 +237,6 @@ class Product(models.Model):
     
     class Meta:
         ordering = ["name"]
-        verbose_name_plural = "oxen"
      
     def __unicode__(self):
         return self.name
