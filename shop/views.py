@@ -46,8 +46,8 @@ def index(request):
     featured = Product.objects.filter(is_active=True, is_featured=True)      
     featured_one = featured[0:2]
     featured_two = featured[2:4]
-    featured_three = featured[5:6] 
-    featured_four = featured[7:8]  
+    featured_three = featured[4:6] 
+    featured_four = featured[6:8]  
         
     return render(request, "shop/home.html", locals())
 

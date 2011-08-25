@@ -216,7 +216,7 @@ class Product(models.Model):
     super_short_description = models.CharField(max_length=200) # can be deleted, not used.
     body_text = tinymce_models.HTMLField(
         help_text="The main descriptive text. Can be long, aimed at giving a user full details about this product")
-    long_description = models.TextField(blank=True, null=True) # can be deleted, not used
+    long_description = tinymce_models.HTMLField(blank=True, null=True) 
     image = models.ImageField(upload_to='images/product-photos')
     image_2 = models.ImageField(upload_to='images/product-photos', blank=True, null=True)
     image_2_caption = models.CharField(max_length=200, blank=True)

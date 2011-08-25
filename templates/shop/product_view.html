@@ -408,6 +408,8 @@ div.links a {
 					{% endthumbnail %}
 				{% endif %}
 				
+				{{ product.long_description|safe }}
+				
 				{% if other_products %}
 				<h4>Other products from the <a href="{% url category product.category.slug %}">{{ product.category }}</a> category</h4>
 				{% for p in other_products %}
@@ -512,7 +514,7 @@ div.links a {
 
 	
 		
-	{{ product.long_description|safe }}
+
 
 	
 	
