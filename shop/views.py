@@ -146,7 +146,7 @@ def product_view(request, slug):
             	 'product': product,
             })
 
-            recipient = settings.PROJECT_EMAIL
+            recipient = settings.ADMIN_EMAIL
             sender = settings.PROJECT_EMAIL
             subject_line = "%s - request for contact through website" % settings.PROJECT_NAME
                 
