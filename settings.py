@@ -109,6 +109,7 @@ INSTALLED_APPS = (
 GA_IS_ON = False
 PROJECT_NAME = 'WeSourceFactories'
 PROJECT_EMAIL = 'sales@wesourcefactories.com'
+ADMIN_EMAIL = 'asiegelwsf@gmail.com'
 PROJECT_URL = 'http://www.wesourcefactories.com'
 SHIPPING_PRICE = '3'
 PAYMENTS_ACTIVE = False

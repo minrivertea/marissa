@@ -194,8 +194,9 @@ def contact_us(request):
             	 'country': country,
             })
 
-            recipient = settings.SITE_EMAIL
-            sender = settings.SITE_EMAIL
+            # send an email to admin
+            recipient = settings.ADMIN_EMAIL
+            sender = settings.PROJECT_EMAIL
             subject_line = "%s - website contact form submission" % settings.PROJECT_NAME
                 
             send_mail(
