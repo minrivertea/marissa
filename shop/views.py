@@ -44,10 +44,10 @@ def index(request):
     
     # load variables 
     featured = Product.objects.filter(is_active=True, is_featured=True)      
-    featured_one = featured[0:2]
-    featured_two = featured[2:4]
-    featured_three = featured[4:6] 
-    featured_four = featured[6:8]  
+    featured_one = featured[0:4]
+    featured_two = featured[4:8]
+    featured_three = featured[8:12] 
+    featured_four = featured[12:16]  
         
     return render(request, "shop/home.html", locals())
 
@@ -71,7 +71,7 @@ def page(request, slug, sub_page=None):
     
 # the product listing page
 def categories(request):
-    all_categories = Category.objects.filter(parent=None)
+    all_categories = Category.objects.filter(parent=None, is_active=True)
 
     return render(request, "shop/categories.html", locals())
 

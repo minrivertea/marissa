@@ -171,6 +171,7 @@ class Category(models.Model):
         help_text="Is this a sub-category of another category?")
     image = models.ImageField(upload_to="images/category-photos", 
         help_text="A generic image that introduces this category of products")
+    is_active = models.BooleanField(default=True)
     
     def __unicode__(self):
         return self.name
@@ -185,7 +186,7 @@ class Category(models.Model):
         return url
     
     def get_children(self):
-        children = Category.objects.filter(parent=self)
+        children = Category.objects.filter(parent=self, is_active=True)
         return children
     
     def products_count(self):

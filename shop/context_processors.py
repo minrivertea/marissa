@@ -29,7 +29,7 @@ def get_products(request):
     return {'products': products}
 
 def get_categories(request):
-    categories = Category.objects.all()
+    categories = Category.objects.filter(is_active=True)
     return {'categories': categories}
 
 def get_basket(request):
