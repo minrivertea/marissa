@@ -2,7 +2,7 @@
 {% load thumbnail %}
 {% load django_static %}
 
-{% block metadescription %}{% endblock %}
+{% block metadescription %}{{ shopsettings.product_page_description|striptags }}{% endblock %}
 
 {% block pagetitle %}Our products{% endblock %}
 

@@ -159,6 +159,14 @@ class Page(models.Model):
     def get_children(self):
         pages = Page.objects.filter(parent=self)
         return pages
+    
+    def get_absolute_url(self):
+        if self.parent:
+            url = '/%s/%s/' % (self.parent.slug, self.slug)
+        else:
+            url = '/%s/' % self.slug
+        
+        return url
 
 
 class Category(models.Model):
@@ -243,7 +251,7 @@ class Product(models.Model):
         return self.name
       
     def get_absolute_url(self):
-        return "%s/product/%s/" % (settings.PROJECT_URL, self.slug)  #important, do not change
+        return "/product/%s/" % (self.slug)  #important, do not change
     
     def get_lowest_price(self):
         prices = UniqueProduct.objects.filter(parent_product=self).order_by('price')[0]

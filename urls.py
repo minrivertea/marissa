@@ -1,11 +1,10 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 import django.views.static
-from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
+from django.contrib.sitemaps import GenericSitemap
 from django.views.generic.simple import direct_to_template
-from shop.models import Product
+from shop.models import Product, Page
 from shop.views import page
-from blog.models import BlogEntry
 from marissa.blog.feeds import LatestEntries
 
 
@@ -18,14 +17,13 @@ products = {
     'queryset': Product.objects.filter(is_active=True),
 }
 
-blogs = {
-    'queryset': BlogEntry.objects.filter(is_draft=False),	
+pages = {
+    'queryset': Page.objects.all(),	
 }
 
 sitemaps = {
-    'flatpages': FlatPageSitemap,
+    'pages': GenericSitemap(pages, priority=0.6),
     'products': GenericSitemap(products, priority=0.6),
-    'blogs': GenericSitemap(blogs, priority=0.6),
 }
 
 # for the feeds

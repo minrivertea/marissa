@@ -146,6 +146,7 @@ def product_view(request, slug):
             	 'product': product,
             })
 
+            # for the moment, we're using ADMIN_EMAIL because it's their gmail account
             recipient = settings.ADMIN_EMAIL
             sender = settings.PROJECT_EMAIL
             subject_line = "%s - request for contact through website" % settings.PROJECT_NAME
