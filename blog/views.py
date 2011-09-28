@@ -11,8 +11,7 @@ def render(request, template, context_dict=None, **kwargs):
     )
 
 def index(request):
-    entries = BlogEntry.objects.filter(is_draft=False, is_gallery=False).order_by('-date_added')[:10]   
-    welikes = WeLike.objects.all().order_by('-date_added')                      
+    entries = BlogEntry.objects.filter(is_draft=False, is_gallery=False).order_by('-date_added')[:10]                       
     return render(request, "blog/home.html", locals())
     
 def more(request):
@@ -38,6 +37,5 @@ def even_more(request):
 def blog_entry(request, slug):
     entry = get_object_or_404(BlogEntry, slug=slug)
     other_entries = BlogEntry.objects.exclude(id=entry.id).order_by('?')[:2]
-    welikes = WeLike.objects.all().order_by('-date_added') 
     return render(request, "blog/entry.html", locals())
   

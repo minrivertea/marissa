@@ -22,7 +22,9 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(ShopSettings)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Shopper)
-
+admin.site.register(Order)
+admin.site.register(Address)
+admin.site.register(UniqueProduct)
 
 
 from django import forms

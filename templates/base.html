@@ -69,7 +69,7 @@
 		   			| <a href="/admin/">Admin</a>
 		   			{% endif %}
 	    		{% else %}
-	    		<a href="/accounts/login/" title="" alt="">Login</a> 
+	    		<a href="/accounts/login/" title="" alt="">Signup/Login</a> 
 		   		{% endif %}
 		   		
 		   	</div>
@@ -79,7 +79,7 @@
 	    <div id="header">
 	    	<div id="logo">
 	    		<a title="" alt="" href="/">
-	    		{% thumbnail shopsettings.logo "400x100" crop="center" as im %}
+	    		{% thumbnail shopsettings.logo "400" crop="center" as im %}
 	    			<img src="{{ im.url }}">
 	    		{% endthumbnail %}
 	    		</a>
@@ -110,6 +110,9 @@
 	    	        </li>
 	    	        <li>
 	    	        	<a class="{% nav_selected request '^/our-factories/' %}" href="/our-factories/" title="" alt="">Our factories</a>
+	    	        </li>
+	    	        <li>
+	    	        	<a class="{% nav_selected request '^/blog/' %}" href="{% url blog_home %}" title="" alt="">Blog</a>
 	    	        </li>
 
 	    	       
