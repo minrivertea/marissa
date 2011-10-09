@@ -135,7 +135,7 @@ ul.footer-links {
 ul.footer-links li {
   display: ;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 div.payments {
@@ -376,14 +376,15 @@ div.links {
 
 div.links a {
   float: right;
-  background-color: #444;
+  background-color: #398C26;
+  color: #fff;
   padding: 10px 15px;	
   border-radius: 5px;
   margin: 0 20px 10px 0;
 }
 
 div.links a:hover {
-  background-color: #398C26;
+  background-color: #444;
   color: #fff;	
 }
 
