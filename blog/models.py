@@ -14,7 +14,7 @@ class BlogEntry(models.Model):
     content = tinymce_models.HTMLField()
     
     def __unicode__(self):
-        return self.slug
+        return self.title
         
     def get_absolute_url(self):
         return "/blog/%s/" % self.slug # important! do not change (for feeds)

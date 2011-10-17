@@ -37,15 +37,17 @@ div.form input, div.form textarea {
 }
 
 div.form input.submit {
-
   padding: 9px;
-  height: 32px;
-  background-color:#666;
+  height: auto;
+  background-color:#398C26;
   color: #fff;
   font-family: Arial, sans-serif;
   font-weight: bold;
   border: none;
   margin: 10px 0 0 160px;
+  border-radius: 5px;
+  webkit-border-radius: 5px;
+  font-size: 16px;
 }
 
 div.form input.submit:hover {
@@ -121,7 +123,7 @@ p.message {
 					</p>
 
 					<p>
-						<textarea id="id_your_message" rows="10" cols="60" name="your_message"></textarea>
+						<textarea id="id_your_message" rows="10" cols="60" name="your_message">{% if message_value %}{{ message_value }}{% endif %}</textarea>
 						<label for="id_your_message">Your message</label> 
 					</p>
 

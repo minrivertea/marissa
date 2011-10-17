@@ -25,6 +25,7 @@ admin.site.register(Shopper)
 admin.site.register(Order)
 admin.site.register(Address)
 admin.site.register(UniqueProduct)
+admin.site.register(TradeShow)
 
 
 from django import forms

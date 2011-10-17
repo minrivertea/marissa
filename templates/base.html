@@ -100,7 +100,7 @@
 	    	    		<a class="{% nav_selected request '^/$' %}" href="{% url home %}" title="">Home</a>
 	    	    	</li>
 	    	        <li>
-	    	           <a class="{% nav_selected request '^/about-us/' %}" href="/about-us/" title="" alt="">About us</a>
+	    	           <a class="{% nav_selected request '^/about-us/' %}" href="/about-us/" title="" alt="">About Us</a>
 	    	        </li>
 	    	        <li>
 	    	        	<a class="{% nav_selected request '^/products/' %}" href="{% url categories %}" title="" alt="">Products</a>
@@ -109,7 +109,7 @@
 	    	        	<a class="{% nav_selected request '^/services/' %}" href="/services/" title="" alt="">Services</a>
 	    	        </li>
 	    	        <li>
-	    	        	<a class="{% nav_selected request '^/our-factories/' %}" href="/our-factories/" title="" alt="">Our factories</a>
+	    	        	<a class="{% nav_selected request '^/trade-shows/' %}" href="/trade-shows/" title="" alt="">Trade Shows</a>
 	    	        </li>
 	    	        <li>
 	    	        	<a class="{% nav_selected request '^/blog/' %}" href="{% url blog_home %}" title="" alt="">Blog</a>
@@ -131,20 +131,19 @@
 	
 	<div id="footer">
 		<ul class="footer-links">
-			<li><a href="/other-products/">Other products</a></li>
-			<li><a href="/why-hire-us/">Why hire us?</a></li>
+			<li><a href="/about-us/">About Us</a></li>
 			<li><a href="/faqs/">FAQs</a></li>
-			<li><a href="/testimonials/">Testimonials</a></li>
+			<li><a href="{% url categories %}">Products</a></li>
 			<li><a href="/beyond-china/">Beyond China</a></li>
+			<li><a href="{% url contact_us %}">Contact Us</a></li>
+			<li><a href="/privacy/">Privacy Policy</a></li>
+			<li><a href="/terms-and-conditions/">Terms of Use</a></li>
+			&copy; 2011 WeSourceFactories
+			
+			
+			
 		</ul>
-		<ul class="footer-links">
-	          <li><a href="/terms-and-conditions/">Terms and Conditions</a></li>
-	          <li><a href="/about-us/">About Us</a></li>
-	          <li><a href="/privacy/">Privacy</a></li>
-	          <li><a href="{% url contact_us %}">Contact Us</a></li> 
-	          <li><a href="{% url categories %}">Our products</a></li>
-	          <li><a href="/our-pledge/">Our pledge</a></li>
-	   </ul>
+
 	</div>
 </div>
 	{% block extrajs %}{% endblock %}

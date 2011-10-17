@@ -18,9 +18,11 @@
 	
 	
 	
-
+{% if page.show_quote_form %}
+{% else %}
 <div id="quote">
 <p><strong>Need a quote?</strong></p>
 <p>Just <a href="{% url contact_us %}">get in touch</a> and we'll discuss your needs</p>
 </div>
+{% endif %}
 	

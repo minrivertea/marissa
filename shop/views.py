@@ -59,11 +59,45 @@ def page(request, slug, sub_page=None):
     
     try:
         if request.session['MESSAGE'] == "1":
-            message = True
+            message = "Thanks, we'll get back to you as soon as possible."
             request.session['MESSAGE'] = ""
     except:
         pass 
     
+    if request.GET.get('message'):
+        print "have a message"
+        message_value = "Meet me at the %s! (Let us know how to get in touch with you, and we'll meet you there.)" % request.GET.get('message')
+    
+    if request.method == 'POST':
+        form = ContactMeForm(request.POST)
+        if form.is_valid():
+            details = form.cleaned_data['info']
+
+            # create email
+            body = render_to_string('shop/emails/contact_request.txt', {
+            	 'details': details,
+            })
+
+            recipient = settings.PROJECT_EMAIL
+            sender = settings.PROJECT_EMAIL
+            subject_line = "%s - request for contact through website" % settings.PROJECT_NAME
+                
+            send_mail(
+                          subject_line, 
+                          body, 
+                          sender,
+                          [recipient], 
+                          fail_silently=False
+            )            
+            
+            
+            request.session['MESSAGE'] = "1"
+            url = request.META.get('HTTP_REFERER','/')
+            return HttpResponseRedirect(url) 
+    
+    else:
+        form = ContactMeForm()
+        
     if page.template:
         return render(request, page.template, locals())
     else:
@@ -146,8 +180,7 @@ def product_view(request, slug):
             	 'product': product,
             })
 
-            # for the moment, we're using ADMIN_EMAIL because it's their gmail account
-            recipient = settings.ADMIN_EMAIL
+            recipient = settings.PROJECT_EMAIL
             sender = settings.PROJECT_EMAIL
             subject_line = "%s - request for contact through website" % settings.PROJECT_NAME
                 
@@ -175,7 +208,6 @@ def product_view(request, slug):
     return render(request, "shop/product_view.html", locals())
     
 def contact_us(request):
-
         
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -817,4 +849,8 @@ def account_order(request, id):
 
 def denied(request):
     return render(request, "shop/denied.html", locals())    
-    
+
+
+def trade_shows(request):
+    objects = TradeShow.objects.filter(is_active=True).order_by('-date_start')
+    return render(request, "shop/trade_shows.html", locals())   

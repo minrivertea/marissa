@@ -8,6 +8,9 @@ class LatestEntries(Feed):
 
     def items(self):
         return BlogEntry.objects.order_by('-date_added')[:5]
+    
+    def item_description(self, item):
+        return item.summary
 
 
 

@@ -43,6 +43,57 @@ div#right-nav ul li.selected a {
   color: #333;	
 }
 
+div.box {
+    background-color: #398C26;
+    float: left;
+    padding: 10px 15px;
+    width: 315px;
+    border-radius: 5px;
+    webkit-border-radius: 5px;
+    margin: 0 15px 15px 0;
+    height: 55px;
+    position: relative;
+}
+
+div.box:hover {
+  background-color: #5DEB3D;	
+}
+
+div#right div.box a.link {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;	
+}
+
+div#right div.box h3 {
+  margin: 0 0 5px 0;
+  color: #fff;	
+}
+
+div#right div.box h3 a:link, div#right div.box h3 a:visited {
+  color: #fff;	
+}
+
+div#right div.box p {
+  line-height: 1em;	
+  margin: 0;
+  color: #000;
+}
+
+div.contact {
+  float: left;
+  width: 600px;
+  margin-left: 0;	
+}
+
+div#right div.contact h3 {
+  color: #fff;
+  margin-top: 5px;	
+}
+
 </style>
 {% endblock %}
 
@@ -67,6 +118,22 @@ div#right-nav ul li.selected a {
 		{% endif %}
 	
 		{{ page.content|safe }}
+		
+		{% if page.show_quote_form %}
+		  		<div class="contact">
+			{% if message %}
+				<p class="message">{{ message }}</p>
+			{% else %}
+			<h3>Need a quote?</h3>
+			<p>You can  <a href="{% url contact_us %}">contact us for a quote now</a>, or just drop your email address here and we'll get back in touch.</p>
+		     
+		    <form action="." method="post">
+		    <input type="text" name="info" id="id_info" />
+		    <input type="submit" value="Submit" class="submit">
+		    </form>
+			{% endif %}
+		</div>
+		{% endif %}
 </div>
 
 

@@ -137,6 +137,8 @@ class ShopSettings(models.Model):
         help_text="Are you showing prices on the site and taking payments?")
     site_email = models.CharField(max_length=200, blank=True, null=True,
         help_text="The email addess that forms and contact information will be sent to.")
+    trade_show_intro = tinymce_models.HTMLField(blank=True, null=True,
+        help_text="The text at the top of the 'trade show' page.")
 
 
 class Page(models.Model):
@@ -152,6 +154,8 @@ class Page(models.Model):
         help_text="Optional - will appear on the page if you add it")
     template = models.CharField(max_length=255, blank=True, null=True, 
         help_text="Leave this field empty unless you know what you're doing.")
+    show_quote_form = models.BooleanField(default=False, 
+        help_text="Tick this if you want the full 'get a quote' form to appear at the bottom of this page.")
     
     def __unicode__(self):
         return self.title
@@ -415,7 +419,16 @@ class Order(models.Model):
             amount += settings.SHIPPING_PRICE
         return amount
           
-            
+class TradeShow(models.Model):
+    name = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    date_start = models.DateField(default=datetime.now())
+    date_end = models.DateField(blank=True, null=True)
+    details = models.TextField(blank=True, null=True) 
+    is_active = models.BooleanField(default=False) 
+    
+    def __unicode__(self):
+        return self.name          
 
 # signals to connect to receipt of PayPal IPNs
 
