@@ -852,5 +852,5 @@ def denied(request):
 
 
 def trade_shows(request):
-    objects = TradeShow.objects.filter(is_active=True).order_by('-date_start')
+    objects = TradeShow.objects.filter(is_active=True).order_by('date_start')
     return render(request, "shop/trade_shows.html", locals())   
