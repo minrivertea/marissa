@@ -51,7 +51,7 @@ form label {
 
 		<form method="post" action="{% url registration_register %}">
 		  {% csrf_token %}
-		  <p><label>Your name (what you'll be called on the site)</label><input id="id_username" type="hidden" name="username"></p>
+		  <p><input id="id_username" type="hidden" name="username"></p>
 		  <p><label>Your contact email</label>{{ form.email }}</p>
 		  <p><label>Choose a password</label>{{ form.password1 }}</p>
 		  <p><input type="submit" value="Submit" class="submit" /></p>
