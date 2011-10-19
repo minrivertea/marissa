@@ -38,7 +38,7 @@ ul#products li {
 		<p>Any of these details not up to date? <a href="{% url contact_us %}">Contact us</a> and let us know</p>
 		<ul>
 			<li><strong>Name: </strong> {{ shopper.first_name }} {{ shopper.last_name }}</li>
-			<li><strong>Email: </strong> {{ shopper.email }}</li>
+			<li><strong>Email: </strong> {{ shopper.user.email }}</li>
 			<li><strong>Phone: </strong> {{ shopper.phone }}</li>
 		</ul>
 	

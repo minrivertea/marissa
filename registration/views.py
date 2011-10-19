@@ -7,6 +7,8 @@ Views which allow users to create and activate accounts.
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.core.urlresolvers import reverse
+
 
 import datetime
 
@@ -195,6 +197,8 @@ def register(request, backend, success_url=None, form_class=RegistrationFormNoUs
             # create a new shopper object for this person.
             # we don't need to check if there already is a shopper, because we already checked in the view
             new_shopper = Shopper.objects.create(user=new_user)
+            
+            success_url = reverse('django.contrib.auth.views.login')
             
             if success_url is None:
                 to, args, kwargs = backend.post_registration_redirect(request, new_user)

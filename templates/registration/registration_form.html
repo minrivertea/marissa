@@ -4,23 +4,37 @@
 
 {% block extracss %}
 <style type="text/css">
-div#left input.register-button {
-    background: url("/images/register-button.png") no-repeat scroll left top transparent;
+
+div#main-text-wide div#left {
+  width: 700px;	
+  padding-right: 30px;
+}
+
+div#main-text-wide div#right {
+  float: left;
+  width: 400px;	
+}
+
+input.submit {
+    background-color: #398C26;
     border: medium none;
-    float: right;
-    height: 33px;
-    margin: 10px 0 10px 0;
-    width: 142px;
+    color: #FFFFFF;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    height: 32px;
+    padding: 9px;
+    width: 160px;
 }
 
-div#left input.register-button:hover {
-  background: url('/images/register-button.png') no-repeat center left;	
-  cursor: pointer;
+input.submit:hover {
+    background-color: #666;
+    cursor: pointer;
 }
 
-div#left input.register-button:active {
-  background: url('/images/register-button.png') no-repeat bottom left;
-  cursor: pointer;	
+form label {
+  margin-bottom: 5px;	
+  color: #e1e1e1;
+  float: left;
 }
 
 </style>
@@ -28,23 +42,23 @@ div#left input.register-button:active {
 
 {% block content %}
 
-<div id="top">
-<h1>Register for an account</h1>
-</div>
+<div id="main-text-wide">
+	<div id="left">
+		<h1>Register for an account</h1>
+		<p>Signing up to see our latest products and designs as soon as they are available, and track your orders.</p> 
 
-<p class="description"><em>Registering for an account at laowailai.com allows you to post and answer questions, rate places, and add to your city's feed.</em></p>
+		{{ form.errors }}
 
-{{ form.errors }}
-
-<form method="post" action=".">
-  <p><label>Your name (what you'll be called on the site)</label>{{ form.name }}</p>
-  <p><label>Your contact email (will not be made public)</label>{{ form.email }}</p>
-  <p><label>Choose a password</label>{{ form.password1 }}</p>
-  
-  <input type="submit" value="" class="register-button" />
-</form>
-<img style="float:left; position: relative; top: 10px; margin-right: 20px;" src="/images/lock-large.png"/>
-<p style="float: left; width: 300px; font-size: 11px;">We will never pass on your private information to any other individual or company. Your information is stored securely, your password encrypted, and your email will never be displayed publicly. We hate spam just as much as you do!</p>
-
+		<form method="post" action="{% url registration_register %}">
+		  {% csrf_token %}
+		  <p><label>Your name (what you'll be called on the site)</label><input id="id_username" type="hidden" name="username"></p>
+		  <p><label>Your contact email</label>{{ form.email }}</p>
+		  <p><label>Choose a password</label>{{ form.password1 }}</p>
+		  <p><input type="submit" value="Submit" class="submit" /></p>
+		</form>
+		<img style="float:left; position: relative; top: 10px; margin-right: 20px;" src="/images/lock-large.png"/>
+		
+		<p style="float: left; width: 300px; font-size: 11px;">We will never pass on your private information to any other individual or company. Your information is stored securely, your password encrypted, and your email will never be displayed publicly. We hate spam just as much as you do!</p>
+	</div>
 </div>
 {% endblock %}

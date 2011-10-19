@@ -61,12 +61,7 @@ form label {
 	<div id="right">
 		<h1>Signup</h1>
 		<p>Signing up to see our latest products and designs as soon as they are available, and track your orders.</p> 
-		<form method="post" action="">
-		<label>Your email</label> <input id="id_username" type="text" name="username" maxlength="30" />
-		<label>Your first name</label> <input id="id_first_name" type="text" name="first_name" maxlength="30" />
-		<label>Your last name</label> <input id="id_last_name" type="text" name="last_name" maxlength="30" />
-		<input type="submit" value="Signup" class="submit" />
-		</form>
+		<p><a href="{% url registration_register %}">Signup now &raquo;</a></p>
 	</div>
 
 </div>
