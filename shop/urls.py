@@ -6,6 +6,7 @@ import views
 urlpatterns = patterns('',
 
     url(r'^$', views.index, name="home"),
+    url(r'^hometest/$', views.hometest, name="hometest"),
     url(r'^account/$', views.account, name="account"),
     url(r'^account/(\w+)/$', views.account_order, name="account_order"),
     url(r'^contact-us/submit$', views.contact_us, name="contact_us"),

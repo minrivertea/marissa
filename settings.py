@@ -155,6 +155,11 @@ try:
     from local_settings import *
 except ImportError:
     pass
+    
+try:
+    from filebrowser.settings.py import *
+except ImportError:
+    pass
 
 import logging 
                     

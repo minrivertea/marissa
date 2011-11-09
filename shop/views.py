@@ -51,6 +51,17 @@ def index(request):
         
     return render(request, "shop/home.html", locals())
 
+def hometest(request):
+    
+    # load variables 
+    featured = Product.objects.filter(is_active=True, is_featured=True)      
+    featured_one = featured[0:4]
+    featured_two = featured[4:8]
+    featured_three = featured[8:12] 
+    featured_four = featured[12:16]  
+        
+    return render(request, "shop/home-test.html", locals())
+    
 def page(request, slug, sub_page=None):
     if sub_page:
         page = get_object_or_404(Page, slug=sub_page)

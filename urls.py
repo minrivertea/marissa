@@ -7,7 +7,6 @@ from shop.models import Product, Page
 from shop.views import page
 from marissa.blog.feeds import LatestEntries
 
-
 # admin urls
 from django.contrib import admin
 admin.autodiscover()
