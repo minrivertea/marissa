@@ -59,7 +59,7 @@ def hometest(request):
     featured_two = featured[4:8]
     featured_three = featured[8:12] 
     featured_four = featured[12:16]  
-        
+    shopsettings = get_object_or_404(ShopSettings, pk="2")  
     return render(request, "shop/home-test.html", locals())
     
 def page(request, slug, sub_page=None):

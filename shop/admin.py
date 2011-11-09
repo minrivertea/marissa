@@ -17,9 +17,12 @@ class ReviewAdmin(admin.ModelAdmin):
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     
+class ShopSettingsAdmin(admin.ModelAdmin):
+    list_display = ('homepage_title', 'homepage_description')
+    
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(ShopSettings)
+admin.site.register(ShopSettings, ShopSettingsAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Shopper)
 admin.site.register(Order)
