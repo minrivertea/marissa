@@ -6,7 +6,18 @@ import views
 urlpatterns = patterns('',
 
     url(r'^$', views.index, name="home"),
-    url(r'^hometest/$', views.hometest, name="hometest"),
+    
+    # wsfhome urls
+    url(r'^wsfhome/$', views.wsf_home, name="wsf_home"),
+    url(r'^wsfhome/products/$', views.wsf_categories, name="wsf_categories"),
+    url(r'^wsfhome/products/(?P<cat>[\w-]+)/$', views.wsf_category, name="wsf_category"),
+    url(r'^wsfhome/products/(?P<cat>[\w-]+)/(?P<sub_cat>[\w-]+)$', views.wsf_category, name="wsf_sub_category"),
+    url(r'^wsfhome/product/(?P<slug>[\w-]+)/$', views.wsf_product_view, name="wsf_product_view"),
+    
+    # normal urls
+    
+    url(r'^get_quote/(?P<slug>[\w-]+)/$', views.get_quote, name="get_quote"),
+    
     url(r'^account/$', views.account, name="account"),
     url(r'^account/(\w+)/$', views.account_order, name="account_order"),
     url(r'^contact-us/submit$', views.contact_us, name="contact_us"),

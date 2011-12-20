@@ -270,6 +270,10 @@ div#header-messages div.hm a {
   color: #333;
 }
 
+div#header-messages div.hm a:hover {
+  text-decoration: underline;	
+}
+
 p.shipping {
   float: right;
   margin: 20px 0 0 0;

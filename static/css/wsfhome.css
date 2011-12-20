@@ -1,0 +1,153 @@
+body {
+  background-color: #fff;	
+}
+
+a:link, a:visited {
+  color: #267589;	
+}
+
+a:hover, a:active, ul#nav li a:hover {
+  color: #4499ae;
+}
+
+p {
+  color: #333;	
+}
+
+p strong {
+  color: #000;	
+}
+
+h1 {
+  color: #267589;	
+}
+
+div#container {
+  background-color: #fff;	
+}
+
+div#header {
+  border-bottom: 1px solid #e1e1e1;	
+}
+
+div#logo a {
+  top: 20px;	
+}
+
+ul#nav li:not(:last-child) a {
+  border-right: 1px solid #e1e1e1;	
+}
+
+div#footer {
+  border-top: 1px solid #e1e1e1;	
+}
+
+div#images {
+  float: right;
+  margin-top: 30px;	
+  width: 520px;
+}
+
+div#text {
+  float: left;
+  width: 400px;
+  margin-top: 30px;	
+}
+
+div#text p.subtitle {
+  font-weight:bold;
+  border: none;	
+  font-size: 14px;
+}
+
+div#text p.subtitle span {
+  text-decoration: underline;	
+}
+
+/* root element for single scroll */
+	.scroll {
+		position:relative;
+		overflow:hidden;
+		width: 250px;
+		height: 250px;
+		float:left;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		box-shadow: 0 1px 8px #e1e1e1;
+	}
+	
+	/* root element for the scroll pics */
+	.scroll.two .pics, .scroll.four .pics {
+		width:20000em;
+		position:absolute;
+		clear:both;
+	}
+
+	.scroll.one .pics, .scroll.three .pics {
+		width:20000em;
+		position:absolute;
+		clear:both;
+	}
+	
+	/* single scroll item */
+	.pics div {
+		float:left;
+		cursor:pointer;
+		width:250px !important;
+		height:250px;
+		margin:0px;
+	}
+
+
+#wsf-normal-link {
+  font-weight: bold;
+  font-size: 12px;
+  position: absolute;
+  top: 15px;	
+  left: 40px;
+}
+
+div#quote, div.contact {
+  background-color: #e1e1e1;
+  color: #333;	
+}
+
+div.contact h3 {
+  color: #000;	
+}
+
+div.contact p {
+  color: #333;	
+}
+
+div.contact input.submit {
+  background-color: #999;	
+}
+
+div.contact input.submit:hover {
+  background-color: #4499ae;	
+}
+
+div.links a {
+  background-color: #267589;	
+}
+
+div.links a:hover {
+  background-color: #4499ae;
+}
+
+div#quote p strong {
+  color: #000;	
+}
+
+div#main-text-wide div#left div#quote p {
+  color: #333;	
+}
+
+div#main-text-wide div#left ul#categories li a {
+  background-color: #267589;
+}
+
+div#main-text-wide div#left ul#categories li a:hover {
+  background-color: #4499ae;
+}

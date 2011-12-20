@@ -1,0 +1,60 @@
+{% extends "shop/wsfhome/base.html" %}
+{% load thumbnail %}
+{% load django_static %}
+
+{% block metadescription %}{{ shopsettings.product_page_description|striptags }}{% endblock %}
+
+{% block pagetitle %}Our products{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+div#right p.category-description {
+  margin-bottom: 40px;	
+}
+
+div.promo.category {
+  width: 150px;	
+  padding-bottom: 0;
+}
+
+div#right div.promo.category div.text {
+    left: 10px;
+    top: -13px;
+}
+
+div#right div.promo.category div.text p {
+  font-size: 13px;
+  color: #333;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div id="main-text-wide">
+
+	
+	<div id="left">
+		{% include 'shop/wsfhome/snippets/categories_nav.html' %}
+	</div>
+
+	<div id="right">
+	<h1>{{ category.name }} ({{ category.products_count }})</h1>
+			
+	{{ category.description|safe }}
+		
+
+	<div id="products">	
+		{% include "shop/wsfhome/snippets/products_list.html" %}
+	</div>
+		
+</div>
+
+	
+
+</div>
+
+
+{% endblock %}

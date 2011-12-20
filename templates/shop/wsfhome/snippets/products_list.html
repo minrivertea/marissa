@@ -1,0 +1,32 @@
+{% load thumbnail %}
+{% load django_static %}
+
+{% for product in products %}
+
+      <div class="promo">
+      	  <a class="link" title="{{ product.name }} click to view more details" href="{% url wsf_product_view product.slug %}"><span class="link"></span></a>	
+      	  <div class="image">
+			{% thumbnail product.image "160x160" crop="" as im %}
+			<img alt="a picture of {{ product.name }}" title="{{ product.name }} click to view more details" class="promo" src="{{ im.url }}"/>
+			{% endthumbnail %}
+		  </div>
+		  
+		  <div class="text">
+			<p>
+			<a title="{{ product.name }} - find out more" href="{% url product_view product.slug %}">
+			{{ product.name }}
+			
+			{% if payments_active %}
+			{% for price in prices %}  	
+    	    	{% if forloop.first %}
+        			 - {{ price.price_unit }}{{ price.price|floatformat }}
+	        	{% else %}
+    	    	{% endif %}
+        	{% endfor %}
+        	{% endif %}
+        	</a>
+			
+			</p> 
+		</div>     	
+	  </div>      
+{% endfor %}

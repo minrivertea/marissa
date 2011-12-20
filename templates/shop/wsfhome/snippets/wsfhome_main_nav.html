@@ -1,0 +1,7 @@
+<ul id="nav">
+	{% for c in categories %}
+<li>
+	<a href="{% url wsfhome_category c.slug %}">{{ c.name }}</a>
+</li>
+{% endfor %}
+</ul>

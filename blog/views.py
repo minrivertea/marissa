@@ -11,15 +11,15 @@ def render(request, template, context_dict=None, **kwargs):
     )
 
 def index(request):
-    entries = BlogEntry.objects.filter(is_draft=False, is_gallery=False).order_by('-date_added')[:10]                       
+    entries = BlogEntry.objects.filter(is_draft=False).order_by('-date_added')[:10]                       
     return render(request, "blog/home.html", locals())
     
 def more(request):
-    entries = BlogEntry.objects.filter(is_draft=False, is_gallery=False).order_by('-date_added')  
+    entries = BlogEntry.objects.filter(is_draft=False).order_by('-date_added')  
     return render(request, "blog/more.html", locals())
     
 def even_more(request):
-    entries = BlogEntry.objects.all().filter(is_draft=False, is_gallery=False).order_by('-date_added')
+    entries = BlogEntry.objects.all().filter(is_draft=False).order_by('-date_added')
     cool_shit = CoolShit.objects.all().order_by('-date_added')
     latest = []         
     for entry in entries:

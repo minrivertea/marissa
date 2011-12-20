@@ -1,0 +1,23 @@
+<ul id="categories">
+	{% for category in sub_categories %}
+		<li>
+			<a href="{% url wsf_category category.slug %}">{{ category.name }}</a>
+			{% if category.get_children %}
+				{% if category.get_absolute_url in request.path %}
+		        	<ul class="sub-categories">
+		        		{% for category in category.get_children %}
+		        			<li>
+		        				<a href="{% url wsf_sub_category category.parent.slug category.slug %}">{{ category.name }}</a>
+		        			</li>
+		        		{% endfor %}
+		        	</ul>
+				{% endif %}
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+
+<div id="quote">
+<p><strong>Need a quote?</strong></p>
+<p>Just <a href="{% url contact_us %}">get in touch</a> and we'll discuss your needs</p>
+</div>

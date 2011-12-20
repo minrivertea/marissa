@@ -14,7 +14,11 @@ def common(request):
         context['paypal_submit_url'] = settings.PAYPAL_SUBMIT_URL
         context['payments_active'] = True
     try:
-        context['shopsettings'] = get_object_or_404(ShopSettings, pk=1)
+        if '/wsfhome/' in request.path:
+            context['shopsettings'] = get_object_or_404(ShopSettings, pk=2)
+            context['wsfcategories'] = Category.objects.filter(parent__slug='wsf-home')
+        else:
+            context['shopsettings'] = get_object_or_404(ShopSettings, pk=1)
     except:
         pass
     context['sitename'] = settings.PROJECT_NAME

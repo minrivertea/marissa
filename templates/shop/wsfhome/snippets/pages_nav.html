@@ -1,0 +1,28 @@
+{% load nav_selected %}
+
+
+<ul id="right-nav">
+  {% for p in pages %} 
+
+	<!-- if it's got no parent (top nav) or it's a sub-sub page, don't show it -->
+    {% if not p.parent %}
+    {% else %}
+        {% if p.parent.slug in request.path %}
+		<li>
+		    <a class="{% if p.slug in request.path %}selected{% endif %}" href="{% url sub_page p.parent.slug p.slug %}">{{ p.title }}</a>
+		</li>
+		{% endif %}
+	{% endif %}
+  {% endfor %}
+</ul>
+	
+	
+	
+{% if page.show_quote_form %}
+{% else %}
+<div id="quote">
+<p><strong>Need a quote?</strong></p>
+<p>Just <a href="{% url contact_us %}">get in touch</a> and we'll discuss your needs</p>
+</div>
+{% endif %}
+	

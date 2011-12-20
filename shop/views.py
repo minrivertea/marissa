@@ -50,17 +50,6 @@ def index(request):
     featured_four = featured[12:16]  
         
     return render(request, "shop/home.html", locals())
-
-def hometest(request):
-    
-    # load variables 
-    featured = Product.objects.filter(is_active=True, is_featured=True)      
-    featured_one = featured[0:4]
-    featured_two = featured[4:8]
-    featured_three = featured[8:12] 
-    featured_four = featured[12:16]  
-    shopsettings = get_object_or_404(ShopSettings, pk="2")  
-    return render(request, "shop/home-test.html", locals())
     
 def page(request, slug, sub_page=None):
     if sub_page:
@@ -173,49 +162,19 @@ def product_view(request, slug):
     
     if product.is_private and not request.user.is_authenticated():
         return HttpResponseRedirect('/permission-denied/')
-            
-            
+
     
     prices = UniqueProduct.objects.filter(parent_product=product, is_active=True).order_by('price')
     other_products = Product.objects.filter(is_active=True, category=product.category).exclude(id=product.id)[:5]
     reviews = Review.objects.filter(product=product.id, is_published=True)[:2]
-    
-    if request.method == 'POST':
-        form = ContactMeForm(request.POST)
-        if form.is_valid():
-            details = form.cleaned_data['info']
+    form = ContactMeForm()
+    try:
+        if request.session['MESSAGE'] == "1":
+            request.session['MESSAGE'] = None
+            message = "Thanks, we'll get back to you as soon as possible."
+    except:
+        pass
 
-            # create email
-            body = render_to_string('shop/emails/contact_request.txt', {
-            	 'details': details,
-            	 'product': product,
-            })
-
-            recipient = settings.PROJECT_EMAIL
-            sender = settings.PROJECT_EMAIL
-            subject_line = "%s - request for contact through website" % settings.PROJECT_NAME
-                
-            send_mail(
-                          subject_line, 
-                          body, 
-                          sender,
-                          [recipient], 
-                          fail_silently=False
-            )            
-            
-            
-            request.session['MESSAGE'] = "1"
-            url = reverse('product_view', args=[product.slug])
-            return HttpResponseRedirect(url)
-    
-    else:
-        form = ContactMeForm()
-        try:
-            if request.session['MESSAGE'] == "1":
-                request.session['MESSAGE'] = None
-                message = "Thanks, we'll get back to you as soon as possible."
-        except:
-            pass
     return render(request, "shop/product_view.html", locals())
     
 def contact_us(request):
@@ -606,17 +565,6 @@ def order_complete(request):
     return render(request, "shop/order_complete.html", locals())
 
 
-# the user can choose to not have their stuff tweeted
-def turn_off_twitter(request, id):
-    try:
-        shopper = get_object_or_404(Shopper, pk=id)
-    except:
-        pass
-    
-    shopper.twitter_username = None
-    shopper.save()
-    return HttpResponseRedirect('/order/complete/')
-
 # handles the review/testimonial view
 def review_product(request, slug):
     product = get_object_or_404(Product, slug=slug)
@@ -691,65 +639,6 @@ def reviews(request):
     return render(request, 'shop/reviews.html', locals())
 
  
- 
-# view for the tell_a_friend form      
-def tell_a_friend(request):
-        
-    if request.method == 'POST':
-        form = TellAFriendForm(request.POST)
-        if form.is_valid():
-            
-            # get cleaned data from form submission
-            sender = form.cleaned_data['sender']
-            message = form.cleaned_data['message']
-            recipient = form.cleaned_data['recipient']
-            
-            # create email
-            if message:
-                body = render_to_string('shop/emails/custom_tell_friend.txt', {'message': message})
-            else:
-                body = render_to_string('shop/emails/tell_friend.txt', {'sender': sender})
-            
-            subject_line = "%s wants you to know about %s" % (sender, settings.SITE_NAME)
-                
-            send_mail(
-                          subject_line, 
-                          body, 
-                          sender,
-                          [recipient], 
-                          fail_silently=False
-            )
-            
-            # create the referrer/referee objects
-            try:
-                referrer = get_object_or_404(Shopper, email=sender)
-                referrer.number_referred += 1
-                referrer.save()
-            except:
-                referrer = Shopper.objects.create(email=sender, number_referred=1)
-                referrer.save()
-            
-            referee = Referee.objects.create(
-                    email=recipient,
-                    referred_by=referrer,
-                    )
-            referee.save()
-                 
-            
-            
-            message = "We've sent an email to %s letting them know about - thanks for your help!" % (referee.email, settings.SITE_NAME)
-            # then send them back to the tell a friend page
-            return render(request, "shop/forms/tell_a_friend.html", locals())
-
-        else:
-            if form.non_field_errors():
-                non_field_errors = form.non_field_errors()
-            else:
-                errors = form.errors
-             
-    else:
-        form = TellAFriendForm()
-    return render(request, 'shop/forms/tell_a_friend.html', locals())
 
 # view for my private admin pages
 def admin_stuff(request):
@@ -805,32 +694,6 @@ def ship_it(request, id):
     order.save()
     
     return HttpResponseRedirect('/admin-stuff')
-
-# function for sending the 'send sample to friend' email
-def send_sampler_email(request, id):
-    order = get_object_or_404(Order, pk=id)
-    shopper = order.owner
-    if order.sampler_email_sent:
-        return False
-
-    sender = settings.SITE_EMAIL
-    recipient = shopper.email
-            
-    # create email
-    body = render_to_string('shop/emails/send_sample_to_friend_email.txt', {'shopper': shopper})
-    subject_line = "Give a tea gift to a friend, courtesy of the Min River Tea Farm"
-    send_mail(
-                      subject_line, 
-                      body, 
-                      sender,
-                      [recipient], 
-                      fail_silently=False
-    )
-    
-    order.sampler_email_sent = True
-    order.save()
-    
-    return HttpResponseRedirect('/admin-stuff')
     
 @login_required   
 def account(request):
@@ -865,3 +728,70 @@ def denied(request):
 def trade_shows(request):
     objects = TradeShow.objects.filter(is_active=True).order_by('date_start')
     return render(request, "shop/trade_shows.html", locals())   
+
+
+
+def get_quote(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+ 
+    if request.method == 'POST':
+        form = ContactMeForm(request.POST)
+        if form.is_valid():
+            details = form.cleaned_data['info']
+
+            # create email
+            body = render_to_string('shop/emails/contact_request.txt', {
+            	 'details': details,
+            	 'product': product,
+            })
+
+            recipient = settings.PROJECT_EMAIL
+            sender = settings.PROJECT_EMAIL
+            subject_line = "%s - request for contact through website" % settings.PROJECT_NAME
+                
+            send_mail(
+                          subject_line, 
+                          body, 
+                          sender,
+                          [recipient], 
+                          fail_silently=False
+            )            
+
+            request.session['MESSAGE'] = "1"
+            
+            if request.is_ajax():
+                return HttpResponse(data)
+            else:
+                
+                url = request.META.get('HTTP_REFERER','/')
+                return HttpResponseRedirect(url)
+
+
+# these are all the specialised WSF HOME views
+
+    
+def wsf_home(request):
+       
+    return render(request, "shop/wsfhome/index.html", locals())
+
+def wsf_categories(request):
+    return
+
+def wsf_category(request, cat):
+    category = get_object_or_404(Category, slug=cat)
+    sub_categories = Category.objects.filter(parent=category, is_active=True)
+    products = Product.objects.filter(category=category, is_active=True)
+    return render(request, 'shop/wsfhome/categories.html', locals())
+
+def wsf_sub_category(request, slug, sub_slug):
+    return
+
+def wsf_product_view(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    try:
+        if request.session['MESSAGE'] == "1":
+            request.session['MESSAGE'] = None
+            message = "Thanks, we'll get back to you as soon as possible."
+    except:
+        pass
+    return render(request, 'shop/wsfhome/product_view.html', locals())
