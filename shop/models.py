@@ -139,6 +139,8 @@ class ShopSettings(models.Model):
         help_text="The email addess that forms and contact information will be sent to.")
     trade_show_intro = tinymce_models.HTMLField(blank=True, null=True,
         help_text="The text at the top of the 'trade show' page.")
+    wsf_home_feature_image = models.ImageField(upload_to="images/", blank=True, null=True,
+        help_text="Optional - image for the WSFHome homepage")
 
 
 class Page(models.Model):

@@ -23,57 +23,19 @@ $(function() {
 
 {% block extracss %}
 <style type="text/css">
-
+div#images {
+  margin-top: 50px;
+}	
 </style>
 {% endblock %}
 
 {% block content %}
 <div id="images">
-	<div class="scroll one">
-		<div class="pics">
-		{% for product in featured_one %}
-			{% thumbnail product.image "250x250" crop="top" as im %}
-				<a href="{% url product_view product.slug %}"><img src="{{ im.url }}"></a>
-			{% endthumbnail %}
-		{% endfor %}
-		</div>
-	</div>
-	
-	<div class="scroll two">
-		<div class="pics">
-		{% for product in featured_two %}
-			{% thumbnail product.image "250x250" crop="top" as im %}
-				<a href="{% url product_view product.slug %}"><img src="{{ im.url }}"></a>	
-			{% endthumbnail %}
-		{% endfor %}
-		</div>
-	</div>
-
-	<div class="scroll three">
-		<div class="pics">
-		{% for product in featured_three %}
-			{% thumbnail product.image "250x250" crop="top" as im %}
-				<a href="{% url product_view product.slug %}"><img src="{{ im.url }}"></a>	
-			{% endthumbnail %}
-		{% endfor %}
-		</div>
-	</div>
-
-	<div class="scroll four">
-		<div class="pics">
-		{% for product in featured_four %}
-			{% thumbnail product.image "250x250" crop="top" as im %}
-				<a href="{% url product_view product.slug %}"><img src="{{ im.url }}"></a>	
-			{% endthumbnail %}
-		{% endfor %}
-		</div>
-	</div>
-
-	<div class="links">
-		<a href="{% url categories %}">View our products &raquo;</a>
-		<a href="/contact-us/">Can't find what you're looking for?</a>
-	</div>
-	
+	{% if shopsettings.wsf_home_feature_image %}
+		{% thumbnail shopsettings.wsf_home_feature_image "520" crop="center" as im %}
+			<img src="{{ im.url }}"/>
+		{% endthumbnail %}
+	{% endif %}	
 </div>
 
 <div id="text">
