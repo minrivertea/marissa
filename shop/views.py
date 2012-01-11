@@ -771,7 +771,7 @@ def get_quote(request, slug):
 
     
 def wsf_home(request):
-       
+    featured = Product.objects.filter(is_active=True, wsf_home_featured=True)[:4]
     return render(request, "shop/wsfhome/index.html", locals())
 
 def wsf_categories(request):

@@ -11,9 +11,6 @@
 <script>
 $(function() {
 	$(".scroll.one").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3500 });
-	$(".scroll.two").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 3800 });
-	$(".scroll.three").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4300 });
-	$(".scroll.four").scrollable({ vertical: false, circular: true, speed: 800, }).autoscroll({ autoplay: true, interval: 4600 });
 });
 </script>
 {% endblock %}
@@ -26,16 +23,25 @@ $(function() {
 div#images {
   margin-top: 50px;
 }	
+
+.scroll {
+  width: 520px;
+  height: 520px;	
+}
 </style>
 {% endblock %}
 
 {% block content %}
 <div id="images">
-	{% if shopsettings.wsf_home_feature_image %}
-		{% thumbnail shopsettings.wsf_home_feature_image "520" crop="center" as im %}
-			<img src="{{ im.url }}"/>
-		{% endthumbnail %}
-	{% endif %}	
+	<div class="scroll one">
+		<div class="pics">
+			{% for i in featured %}
+				{% thumbnail i.image "520x520" crop="center" as im %}
+					<img src="{{ im.url }}"/>
+				{% endthumbnail %}
+			{% endfor %}	
+		</div>
+	</div>
 </div>
 
 <div id="text">
