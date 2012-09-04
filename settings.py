@@ -40,7 +40,7 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = ''
 
-ADMIN_MEDIA_PREFIX = '/admin/media/'
+ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '12345'
